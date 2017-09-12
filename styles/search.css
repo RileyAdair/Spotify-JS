@@ -1,0 +1,40 @@
+/*==============================================================================
+                                search-view
+==============================================================================*/
+.view-container.search {
+  text-align: left;
+}
+
+.search-form {
+  padding: 22px 30px;
+  margin-bottom: 30px;
+  background: #282828;
+  color: #fff;
+}
+
+.search-form p {
+  font-size: 14px;
+}
+
+.search-input {
+  caret-color: #1db954;
+  background: transparent;
+  color: #fff;
+  /*#515151*/
+  font-size: 3rem;
+  line-height: 1.6;
+  outline: none;
+  border: none;
+  padding: 4px 0;
+}
+
+.search-input::-webkit-input-placeholder {
+color: #515151;
+}
+
+.artist-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+}

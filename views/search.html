@@ -1,0 +1,11 @@
+<section class="view-container search">
+  <form class="search-form">
+    <p>Search for an Artist, Song, Album or Playlist</p>
+    <input class="search-input bold" type="text" ng-model="searchStr" ng-keyup="searchMusic(searchStr)" placeholder="Start typing...">
+  </form>
+
+  <div ng-repeat="artist in artists">
+    <img class="artist-img" ng-src="{{artist.image.url}}" ui-sref="artist({id: artist.name})" alt="null-image">
+    <h2>{{artist.name}}</h2>
+  </div>
+</section>
