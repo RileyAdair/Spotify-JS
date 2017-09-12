@@ -11,7 +11,11 @@
     <form>
       <input type="text" ng-model="searchStr" ng-keyup="searchMusic(searchStr)" placeholder="Search Music">
     </form>
-    <!-- <button ng-click="getUser(user)">Search</button> -->
+
+    <div ng-repeat="artist in artists">
+      <img class="artist-img" ng-src="{{artist.image.url}}" alt="null-image">
+      {{artist.name}}
+    </div>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
