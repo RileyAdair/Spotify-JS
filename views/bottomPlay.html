@@ -1,0 +1,15 @@
+<div class="bottomPlay-container">
+  <footer class="bottom-play-bar-container">
+    <div class="bottom-play-bar">
+      <div class="bottom-play-bar_left">
+        <div>{{track.artistName}}</div> <br>
+        <div class="track-info">{{track.trackName}}</div>
+      </div>
+      {{test}}
+      <div class="bottom-play-bar_center">
+        <audio ng-src="{{track.preview}}" controls autoplay="true"></audio>
+      </div>
+      <div class="bottom-play-bar_right"><div>Volume</div></div>
+    </div>
+  </footer>
+</div>

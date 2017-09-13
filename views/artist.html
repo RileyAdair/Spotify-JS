@@ -1,14 +1,18 @@
 <section class="view-container-artist" ng-style="{'background-image': 'url(' + artist.image.url + ')'}">
   <!-- <img ng-src="{{background.image.url}}" alt=""> -->
   <div class="artist-content">
+    <span>{{artist.followers}} FOLLOWERS</span>
     <h1>{{artist.name}}</h1>
+    <button>PLAY</button>
+    <button>FOLLOW</button>
+    <h2 class="white">Popular</h2>
   </div>
   <section class="track-container">
     <div class="track-item" ng-repeat="track in tracks">
-      <div ng-click="playSong(track.preview)" class="track-item-play"></div>
-      <span class="track-item-name white">{{track.name}}</span>
+      <div ng-click="playPreview(track)" class="track-item-play"></div>
+      <span class="track-item-name white">{{track.trackName}}</span>
       <span class="track-item-duration">{{track.duration}}</span>
     </div>
   </section>
-  <audio ng-src="{{url}}" controls></audio>
+  <bottom-play></bottom-play>
 </section>

@@ -27,8 +27,18 @@
   z-index: 1;
 }
 
+.artist-content h1 {
+  font-size: 4em;
+}
+
+.artist-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  padding: .4em 1em
+}
+
 .track-container {
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
   text-align: left;
   position: relative;
@@ -36,9 +46,10 @@
 }
 
 .track-item-play {
+  border-radius: 50%;
   height: 40px;
   width: 40px;
-  background: blue;
+  background: grey;
 }
 
 .track-item-duration {

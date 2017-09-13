@@ -1,7 +1,7 @@
-angular.module('app').service('mainSrvc', function($http, $q) {
+spotify.service('mainSrvc', function($http, $sce) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQCFPueTMQluNAxS4mUBsQEy7Got-6kw6wz8zqXHFVGBKQuqRXg9gEVIZ8KhwgN2Y_nVyLoj5fAeH2UsiNBoFH9Lw0le9rYlioUUnD685HyYmOXRiUzTGjPS-_v-6Y7fPkBgiaAtX7dpZl0k6JX-DjovnzKYSss';
+  var accessToken = 'BQA2nw5UJ0sbk-pBvi_jHbKpGiBGFPsSZldF6z5oAboCI-gdFZJ295nLiC2lDmpgWq7ojqF1fY1kaLK75Rg0Tmr_XePbxihEa7058iQrbvuwvBgSoI42dq-sE2ZVJFAdpdhoyBujTZi8wCwiq8ONMX1ElTH7Gwg';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -10,7 +10,6 @@ angular.module('app').service('mainSrvc', function($http, $q) {
     return $http.get(searchUrl)
 
     .then(function(response){
-      // console.log(response);
       var results = response.data.artists.items;
       var artistArr = [];
 
@@ -33,10 +32,14 @@ angular.module('app').service('mainSrvc', function($http, $q) {
     var artistUrl = "https://api.spotify.com/v1/artists/" + artist;
     return $http.get(artistUrl)
     .then(function(response){
+      var results = response.data;
       var obj = {
-        name: response.data.name,
-        image: response.data.images[0]
+        name: results.name,
+        followers: results.followers.total,
+        followLink: results.external_urls.spotify,
+        image: results.images[0]
       }
+      // console.log(obj);
       return obj;
     })
   }
@@ -48,19 +51,36 @@ angular.module('app').service('mainSrvc', function($http, $q) {
     var tracksUrl = "https://api.spotify.com/v1/artists/" + tracks + "/top-tracks?country=US";
     return $http.get(tracksUrl)
     .then(function(response){
+      // console.log(response.data);
       var results = response.data.tracks;
       var tracksArr = [];
 
       for(var i = 0; i < results.length; i++){
         var obj = {
-          name: results[i].name,
+          artistName: results[i].artists[0].name,
+          trackName: results[i].name,
           preview: results[i].preview_url,
           duration: results[i].duration_ms,
-          link: results[i].uri
+          link: results[i].uri,
+          // image: results[i].
         }
         tracksArr.push(obj);
       }
       return tracksArr;
     })
   }
+
+
+  this.playPreview = function(preview) {
+    var trustPreview = $sce.trustAsResourceUrl(preview.preview);
+    var obj = {
+      artistName: preview.artistName,
+      trackName: preview.trackName,
+      duration: preview.duration,
+      preview: trustPreview
+    }
+    return obj;
+  }
+
+  this.test = 'testing';
 });

@@ -1,0 +1,68 @@
+/*==============================================================================
+                                bottom-play
+==============================================================================*/
+.bottomPlay-container {
+  background-color: #181818;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
+}
+
+.bottom-play-bar-container {
+  min-width: 620px;
+  background-color: #282828;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bottom-play-bar {
+  -ms-flex-align: center;
+  align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  height: 90px;
+  padding: 0 16px;
+}
+
+.bottom-play-bar_left {
+  width: 30%;
+  min-width: 180px;
+  display: block;
+}
+
+.bottom-play-bar_center {
+  width: 40%;
+  max-width: 722px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-play-bar_right {
+  width: 30%;
+  min-width: 180px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.track-info {
+  justify-self: flex-start
+}
