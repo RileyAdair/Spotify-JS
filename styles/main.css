@@ -7,21 +7,25 @@
 html, body {
   width: 100%;
   font-family: "proxima-nova",sans-serif;
-  font-weight: 100;
+  font-weight: 400;
   letter-spacing: .6px;
   -webkit-font-smoothing: antialiased;
   color: hsla(0,0%,100%,.6);
   transition: color .2s;
-  background: #0D0D0D;
+  background: #181818;
 }
 
 h1 {
-  font-weight: 700;
+  font-weight: 800;
   color: #fff;
 }
 
 .bold {
   font-weight: 700;
+}
+
+.white {
+  color: #fff;
 }
 
 .header-container {
@@ -47,9 +51,7 @@ h1 {
 .header-ul li {
   cursor: pointer;
   margin: 10px 0;
-  /*need extra bold*/
   font-size: 16px;
-  font-weight: 700;
   line-height: 26px;
 }
 
@@ -64,3 +66,5 @@ h1 {
   padding-left: 220px;
   text-align: center;
 }
+
+/*"https://i.scdn.co/image/cb080366dc8af1fe4dc90c4b9959794794884c66"*/

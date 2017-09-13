@@ -5,7 +5,10 @@
   </form>
 
   <div ng-repeat="artist in artists">
-    <img class="artist-img" ng-src="{{artist.image.url}}" ui-sref="artist({id: artist.name})" alt="null-image">
+    <img class="artist-img" ng-src="{{artist.image.url}}" ui-sref="artist({id: artist.id})" alt="null-image">
     <h2>{{artist.name}}</h2>
   </div>
 </section>
+
+
+<!-- ui-sref="artist({name: artist.name, image: artist.image.url})"  -->

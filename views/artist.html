@@ -1,4 +1,14 @@
-<section class="view-container">
-  <h1>{{test}}</h1>
-  <h2>{{cur.id}}</h2>
+<section class="view-container-artist" ng-style="{'background-image': 'url(' + artist.image.url + ')'}">
+  <!-- <img ng-src="{{background.image.url}}" alt=""> -->
+  <div class="artist-content">
+    <h1>{{artist.name}}</h1>
+  </div>
+  <section class="track-container">
+    <div class="track-item" ng-repeat="track in tracks">
+      <div ng-click="playSong(track.preview)" class="track-item-play"></div>
+      <span class="track-item-name white">{{track.name}}</span>
+      <span class="track-item-duration">{{track.duration}}</span>
+    </div>
+  </section>
+  <audio ng-src="{{url}}" controls></audio>
 </section>

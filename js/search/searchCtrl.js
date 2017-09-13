@@ -7,6 +7,7 @@ angular.module('app')
           console.log(response);
           $scope.artists = response;
         })
+
       }
       else {
         $scope.artists = '';

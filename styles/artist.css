@@ -1,0 +1,46 @@
+/*==============================================================================
+                                home-view
+==============================================================================*/
+.view-container-artist{
+  width: 100%;
+  height: 100vh;
+  padding-left: 220px;
+  text-align: center;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.view-container-artist:before {
+  background: linear-gradient(rgba(18, 18, 18,.5), rgba(7, 7, 7,1));
+  position:fixed;
+  content:"";
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index: 0;
+}
+
+.artist-content {
+  position: relative;
+  z-index: 1;
+}
+
+.track-container {
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
+
+.track-item-play {
+  height: 40px;
+  width: 40px;
+  background: blue;
+}
+
+.track-item-duration {
+  float: right;
+}

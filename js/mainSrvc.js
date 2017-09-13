@@ -1,7 +1,7 @@
 angular.module('app').service('mainSrvc', function($http, $q) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQDaf-HznxHmw5YYLFsncY4AOeuGcYBJHRyB3ebduYIddBvxwYa9YD_WIH36KfKrqy5HpmHCx2Mo-eOk7k-O2_0rNwumvG3O-6j_LXWRhJpjtu9XNBnW6CtqD6RqyW1NJFXt54Rg7OAwSgA57fnoj_Wdwd23sHo';
+  var accessToken = 'BQCFPueTMQluNAxS4mUBsQEy7Got-6kw6wz8zqXHFVGBKQuqRXg9gEVIZ8KhwgN2Y_nVyLoj5fAeH2UsiNBoFH9Lw0le9rYlioUUnD685HyYmOXRiUzTGjPS-_v-6Y7fPkBgiaAtX7dpZl0k6JX-DjovnzKYSss';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -28,10 +28,39 @@ angular.module('app').service('mainSrvc', function($http, $q) {
 
   this.getArtist = function(artist){
     var artist = artist.id;
-    // console.log(artist);
+    // console.log(tracks);
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
-    var artistUrl = "https://api.spotify.com/v1/artists/" + "3TVXtAsR1Inumwj472S9r4/" + "top-tracks&client_id" + clientId;
+    var artistUrl = "https://api.spotify.com/v1/artists/" + artist;
+    return $http.get(artistUrl)
+    .then(function(response){
+      var obj = {
+        name: response.data.name,
+        image: response.data.images[0]
+      }
+      return obj;
+    })
+  }
 
-    return $http.get(artistUrl);
+  this.getTracks = function(tracks){
+    var tracks = tracks.id;
+    // console.log(tracks);
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
+    var tracksUrl = "https://api.spotify.com/v1/artists/" + tracks + "/top-tracks?country=US";
+    return $http.get(tracksUrl)
+    .then(function(response){
+      var results = response.data.tracks;
+      var tracksArr = [];
+
+      for(var i = 0; i < results.length; i++){
+        var obj = {
+          name: results[i].name,
+          preview: results[i].preview_url,
+          duration: results[i].duration_ms,
+          link: results[i].uri
+        }
+        tracksArr.push(obj);
+      }
+      return tracksArr;
+    })
   }
 });
