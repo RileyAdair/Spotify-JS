@@ -1,5 +1,8 @@
 spotify.controller('artistCtrl', function($scope, $stateParams, mainSrvc, $sce) {
   // $scope.cur = $stateParams;
+  /*============================================================================
+                              Get-Artist-and-Tracks
+  ============================================================================*/
   mainSrvc.getArtist($stateParams)
   .then(function(response){
 
@@ -10,12 +13,19 @@ spotify.controller('artistCtrl', function($scope, $stateParams, mainSrvc, $sce) 
       $scope.tracks = response;
   })
 
-
-  $scope.track = mainSrvc.defaultPreview();
-
-  $scope.playPreview = function(trackInfo){
-    var trackResults = mainSrvc.playPreview(trackInfo);
-    $scope.track = trackResults;
-    $('audio').attr('autoplay', 'true');
+  /*============================================================================
+                            Pass-Track--Obj-to-Service
+  ============================================================================*/
+  $scope.playPreview = function(trackObj){
+    mainSrvc.playPreview(trackObj);
+    console.log('artistCtrl click');
+    // $scope.track = trackResults;
+    // $('audio').attr('autoplay', 'true');
   }
+
+  /*============================================================================
+                                Add-To-Playlist
+  ============================================================================*/
+
+
 });

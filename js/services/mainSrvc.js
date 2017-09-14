@@ -1,7 +1,7 @@
-spotify.service('mainSrvc', function($http, $sce) {
+spotify.service('mainSrvc', function($http, $sce, $routeScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQDq4V5qdmjOnQdPffAR4eoArrg2WpAD-VY2w4qHX_3K-dtG2h4MSbVgIKyS_QzXHP5b-0AOCFhXERg3uFbdJ6QID9dHf5RPx4hfG7DPBCYvuD-XgkS23NuzX9TT-H_cWm_WhXSvqs-jDGMLe5RlPx1ZdmDJXbY';
+  var accessToken = 'BQDJ96pjIiz3HwTrGUF15lxRVjRgFcCVUyMvhk5JTxBinAlGnIAxTWaqNQlAAzlAyzZwemAnIHEAHV4sQuAkYrXSitREHscL_JjPl4VDc8ho-iLpzM_fCPRHeOgn9eNkxonpoBEOj45-JHS5l1ebT0JWlG42DUQ';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -67,7 +67,10 @@ spotify.service('mainSrvc', function($http, $sce) {
     })
   }
 
+var tempObj = {}
+
   this.defaultPreview = function(){
+    console.log(tempObj)
     var trustPreview = $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f");
     var obj = {
       artistName: 'ODESZA',
@@ -81,19 +84,45 @@ spotify.service('mainSrvc', function($http, $sce) {
     return obj;
   }
 
+  /*============================================================================
+  Pass track-object into function and set global variable equal to the result.
+  This way other controllers can access this result.
+  ============================================================================*/
+
+  this.test = 'testing';
+
+
+
   this.playPreview = function(preview) {
     // console.log(preview);
     var trustPreview = $sce.trustAsResourceUrl(preview.preview);
-    var obj = {
+
+    // var updateObj = {
+    //   artistName: preview.artistName,
+    //   trackName: preview.trackName,
+    //   trackImage: preview.trackImage,
+    //   duration: preview.duration,
+    //   preview: trustPreview
+    // }
+    var tempObj = {
       artistName: preview.artistName,
       trackName: preview.trackName,
       trackImage: preview.trackImage,
       duration: preview.duration,
       preview: trustPreview
     }
-    console.log('clicked');
-    return obj;
+
+    $routeScope.$emit('songStorer', tempObj)
+
+    // return updateObj;
   }
 
-  this.test = 'testing';
+  /*============================================================================
+                              Add-To-Playlist
+  ============================================================================*/
+
+
+
+
+
 });

@@ -17,11 +17,12 @@
     <h2 style="text-align: center" class="white">Popular</h2>
     <div class="track-item" ng-repeat="track in tracks">
       <div ng-click="playPreview(track)" class="track-item-play"></div>
+      <div ng-click="addTrack(track)" class="track-item-add">+</div>
       <span class="track-item-name white">{{track.trackName}}</span>
-      <span class="track-item-duration">{{track.duration}}</span>
+      <div class="track-item-duration">{{track.duration}}</div>
     </div>
   </section>
-  <bottom-play></bottom-play>
+  <!-- <bottom-play></bottom-play> -->
 </section>
 
 <!-- ng-style="{'background-image': 'url(' + artist.image.url + ')'}" -->

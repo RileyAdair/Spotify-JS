@@ -9,11 +9,12 @@
 
 .artist-background-container {
   height: 40vh;
+  min-height: 390px;
 }
 
 .artist-background {
   position: relative;
-  height: 40vh;
+  min-height: 390px;
   background-position: 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -110,7 +111,7 @@
   position: relative;
   z-index: 1;
   padding-left: 220px;
-  padding-top: 30px;
+  padding-top: 18px;
 }
 
 .track-container h2 {
@@ -119,13 +120,30 @@
   padding: .4em 1em
 }
 
+.track-item {
+  display: flex;
+  align-items: center;
+}
+
 .track-item-play {
   border-radius: 50%;
   height: 40px;
   width: 40px;
   background: grey;
+  display: flex;
+}
+
+.track-item-add {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
 }
 
 .track-item-duration {
-  float: right;
+  justify-self: flex-end;
 }
