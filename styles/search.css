@@ -5,11 +5,15 @@
   text-align: left;
 }
 
+.search-container {
+  background-color: #282828;
+  padding: 1.5em 0;
+}
+
 .search-form {
-  padding: 22px 30px;
-  margin-bottom: 30px;
-  background: #282828;
-  color: #fff;
+  padding: 0 2em;
+  margin: 0 auto;
+  max-width: 1480px;
 }
 
 .search-form p {
@@ -19,13 +23,11 @@
 .search-input {
   caret-color: #1db954;
   background: transparent;
-  color: #fff;
   /*#515151*/
   font-size: 3rem;
   line-height: 1.6;
   outline: none;
   border: none;
-  padding: 4px 0;
 }
 
 .search-input::-webkit-input-placeholder {

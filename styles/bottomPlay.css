@@ -1,9 +1,9 @@
 /*==============================================================================
-                                bottom-play
+                                bottom-play-bar
 ==============================================================================*/
 .bottomPlay-container {
   background-color: #181818;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   left: 0;
@@ -41,7 +41,29 @@
 .bottom-play-bar_left {
   width: 30%;
   min-width: 180px;
-  display: block;
+  display: flex;
+}
+
+.bottom-play-bar_left .cover-art-image {
+    width: 56px;
+    height: 56px;
+    margin-right: 16px;
+}
+
+.bottom-play-bar_left .track-info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bottom-play-bar_left .track-info_track {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.bottom-play-bar_left .track-info_artist {
+  font-size: 13px;
 }
 
 .bottom-play-bar_center {
@@ -61,8 +83,4 @@
   flex-direction: row;
   -ms-flex-pack: end;
   justify-content: flex-end;
-}
-
-.track-info {
-  justify-self: flex-start
 }

@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQA2nw5UJ0sbk-pBvi_jHbKpGiBGFPsSZldF6z5oAboCI-gdFZJ295nLiC2lDmpgWq7ojqF1fY1kaLK75Rg0Tmr_XePbxihEa7058iQrbvuwvBgSoI42dq-sE2ZVJFAdpdhoyBujTZi8wCwiq8ONMX1ElTH7Gwg';
+  var accessToken = 'BQDq4V5qdmjOnQdPffAR4eoArrg2WpAD-VY2w4qHX_3K-dtG2h4MSbVgIKyS_QzXHP5b-0AOCFhXERg3uFbdJ6QID9dHf5RPx4hfG7DPBCYvuD-XgkS23NuzX9TT-H_cWm_WhXSvqs-jDGMLe5RlPx1ZdmDJXbY';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -27,7 +27,6 @@ spotify.service('mainSrvc', function($http, $sce) {
 
   this.getArtist = function(artist){
     var artist = artist.id;
-    // console.log(tracks);
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
     var artistUrl = "https://api.spotify.com/v1/artists/" + artist;
     return $http.get(artistUrl)
@@ -46,12 +45,10 @@ spotify.service('mainSrvc', function($http, $sce) {
 
   this.getTracks = function(tracks){
     var tracks = tracks.id;
-    // console.log(tracks);
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
     var tracksUrl = "https://api.spotify.com/v1/artists/" + tracks + "/top-tracks?country=US";
     return $http.get(tracksUrl)
     .then(function(response){
-      // console.log(response.data);
       var results = response.data.tracks;
       var tracksArr = [];
 
@@ -59,10 +56,10 @@ spotify.service('mainSrvc', function($http, $sce) {
         var obj = {
           artistName: results[i].artists[0].name,
           trackName: results[i].name,
+          trackImage: results[i].album.images[0],
           preview: results[i].preview_url,
           duration: results[i].duration_ms,
           link: results[i].uri,
-          // image: results[i].
         }
         tracksArr.push(obj);
       }
@@ -70,15 +67,31 @@ spotify.service('mainSrvc', function($http, $sce) {
     })
   }
 
+  this.defaultPreview = function(){
+    var trustPreview = $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f");
+    var obj = {
+      artistName: 'ODESZA',
+      trackName: "Say My Name (feat. Zyra)",
+      trackImage: {
+        url: "https://i.scdn.co/image/387b19d3bc6178b7429493f9fdf4f7c8c33aabc5"
+      },
+      duration: 262956,
+      preview: trustPreview
+    }
+    return obj;
+  }
 
   this.playPreview = function(preview) {
+    // console.log(preview);
     var trustPreview = $sce.trustAsResourceUrl(preview.preview);
     var obj = {
       artistName: preview.artistName,
       trackName: preview.trackName,
+      trackImage: preview.trackImage,
       duration: preview.duration,
       preview: trustPreview
     }
+    console.log('clicked');
     return obj;
   }
 
