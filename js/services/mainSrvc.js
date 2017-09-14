@@ -1,7 +1,7 @@
-spotify.service('mainSrvc', function($http, $sce, $routeScope) {
+spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQDJ96pjIiz3HwTrGUF15lxRVjRgFcCVUyMvhk5JTxBinAlGnIAxTWaqNQlAAzlAyzZwemAnIHEAHV4sQuAkYrXSitREHscL_JjPl4VDc8ho-iLpzM_fCPRHeOgn9eNkxonpoBEOj45-JHS5l1ebT0JWlG42DUQ';
+  var accessToken = 'BQDp8shiTMJAtFTak-LsKtwNaO_KrM0RAOr_7aRICDjtlNFnFsr15MpVYp2G5eXf5_8tkE5shnjzNhAtayaUoxQpGZ0NPtHvNsMaBycKSUiHqb4jJGQhhpCR1ti8mfe3W6uJUWOeM5gPCUDg_BDobj-uyEhDQ3k';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -112,7 +112,7 @@ var tempObj = {}
       preview: trustPreview
     }
 
-    $routeScope.$emit('songStorer', tempObj)
+    $rootScope.$emit('songStorer', tempObj)
 
     // return updateObj;
   }
