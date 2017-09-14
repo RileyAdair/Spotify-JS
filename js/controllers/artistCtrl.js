@@ -1,7 +1,6 @@
 spotify.controller('artistCtrl', function($scope, $stateParams, mainSrvc, $sce) {
-  // $scope.cur = $stateParams;
   /*============================================================================
-                              Get-Artist-and-Tracks
+                              Get-artist-and-tracks
   ============================================================================*/
   mainSrvc.getArtist($stateParams)
   .then(function(response){
@@ -14,15 +13,17 @@ spotify.controller('artistCtrl', function($scope, $stateParams, mainSrvc, $sce) 
   })
 
   /*============================================================================
-                            Pass-Track--Obj-to-Service
+                            Pass-trackObj-to-service
   ============================================================================*/
   $scope.playPreview = function(trackObj){
     mainSrvc.playPreview(trackObj);
   }
 
   /*============================================================================
-                                Add-To-Playlist
+                                Add-to-playlist
   ============================================================================*/
-
+  $scope.addTrack = function(trackObj){
+    mainSrvc.addTrack(trackObj);
+  }
 
 });

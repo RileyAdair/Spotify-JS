@@ -1,13 +1,16 @@
 spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
-  $scope.test = mainSrvc.test;
 
-  $rootScope.$on('songStorer', function(event, song){
-    console.log(song);
-    $scope.track = song;
+  $rootScope.$on('songStorer', function(event, track){
+    // console.log(track);
+    $scope.track = track;
     $('audio').attr('autoplay', 'true');
   })
 
-
+  // $rootScope.$on('songRecentStorer', function(event, track){
+  //   // console.log(track);
+  //   $scope.track = track;
+  //   $('audio').attr('autoplay', 'true');
+  // })
 
   $scope.track = mainSrvc.defaultPreview();
 });

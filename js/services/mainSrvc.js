@@ -1,8 +1,8 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQDp8shiTMJAtFTak-LsKtwNaO_KrM0RAOr_7aRICDjtlNFnFsr15MpVYp2G5eXf5_8tkE5shnjzNhAtayaUoxQpGZ0NPtHvNsMaBycKSUiHqb4jJGQhhpCR1ti8mfe3W6uJUWOeM5gPCUDg_BDobj-uyEhDQ3k';
-
+  var accessToken = 'BQCTTLTTrdMv0s9WmdYuP7apOx3HZvA9V-IzhxADvyNSyd28DBQobvAdwHJlylPJUCjQmgcTLdxfRF8OWDINMNasT-b_M83jaepq7lFWl0my2ic2heMyW4xqOXVS0vmvmbQ69md0I1kkfv-kt43fljqG_W0QT3w';
+  this.recent = 'recent';
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
     var searchUrl = "https://api.spotify.com/v1/search?type=artist&limit=12&client_id" + clientId + '&q=' + str;
@@ -51,7 +51,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     .then(function(response){
       var results = response.data.tracks;
       var tracksArr = [];
-
+      console.log(response);
       for(var i = 0; i < results.length; i++){
         var obj = {
           artistName: results[i].artists[0].name,
@@ -67,10 +67,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     })
   }
 
-var tempObj = {}
-
   this.defaultPreview = function(){
-    console.log(tempObj)
     var trustPreview = $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f");
     var obj = {
       artistName: 'ODESZA',
@@ -85,44 +82,145 @@ var tempObj = {}
   }
 
   /*============================================================================
-  Pass track-object into function and set global variable equal to the result.
-  This way other controllers can access this result.
+                              Pass-trackObj-to-bottomPlay
   ============================================================================*/
-
-  this.test = 'testing';
-
-
-
   this.playPreview = function(preview) {
-    // console.log(preview);
+    // $sce to inject url
     var trustPreview = $sce.trustAsResourceUrl(preview.preview);
 
-    // var updateObj = {
-    //   artistName: preview.artistName,
-    //   trackName: preview.trackName,
-    //   trackImage: preview.trackImage,
-    //   duration: preview.duration,
-    //   preview: trustPreview
-    // }
-    var tempObj = {
+    var trackObj = {
       artistName: preview.artistName,
       trackName: preview.trackName,
       trackImage: preview.trackImage,
       duration: preview.duration,
       preview: trustPreview
     }
-
-    $rootScope.$emit('songStorer', tempObj)
-
-    // return updateObj;
+    // Emit fires and passes trackObj on $rooteScope
+    $rootScope.$emit('songStorer', trackObj)
+    console.log('new track');
+    // for(var i = 0; i < recentArr.length; i++){
+    //   if(artistName)
+    // }
+    this.recentArr.unshift(trackObj);
+    this.recentArr.pop();
+    // console.log(this.recentArr);
   }
 
   /*============================================================================
-                              Add-To-Playlist
+                              Play-recently-played-track
   ============================================================================*/
+  this.playRecentPreview = function(preview) {
+    $rootScope.$emit('songStorer', preview)
+  }
 
+  /*============================================================================
+                              Recently-played-array
+  ============================================================================*/
+  this.recentArr = [
+    {
+      artistName: 'ODESZA',
+      trackName: "Say My Name (feat. Zyra)",
+      trackImage: {
+        url: "https://i.scdn.co/image/387b19d3bc6178b7429493f9fdf4f7c8c33aabc5"
+      },
+      duration: 262956,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Keys N Krates',
+      trackName: "I Just Can't Deny",
+      trackImage: {
+        url: "https://i.scdn.co/image/eca1de5f0e6ec4b581659e8b5d218b9692d67c40"
+      },
+      duration: 240000,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Jai Wof',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: 248470,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Jai Wof',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: 248470,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Jai Wof',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: 248470,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    },
 
+  ];
 
+  /*============================================================================
+                            Add-to / Delete-from-playlist
+  ============================================================================*/
+  this.addTrack = function(trackObj){
+    this.newPlaylistArr.unshift(trackObj);
+    console.log(this.newPlaylistArr);
+  }
+  this.deleteNewTrack = function(trackObj){
+    this.newPlaylistArr.splice(trackObj,1);
+  }
 
+  this.deleteTrack = function(trackObj){
+    this.playlistArr.splice(trackObj,1);
+  }
+
+  /*============================================================================
+                            Play-playlist-track
+  ============================================================================*/
+  this.playPlaylistPreview = function(preview) {
+    $rootScope.$emit('songStorer', preview)
+    console.log('old track');
+  }
+
+  /*============================================================================
+                              Playlist-array
+  ============================================================================*/
+  this.newPlaylistArr = [];
+
+  this.playlistArr = [
+    {
+      artistName: 'ODESZA',
+      trackName: "Say My Name (feat. Zyra)",
+      trackImage: {
+        url: "https://i.scdn.co/image/387b19d3bc6178b7429493f9fdf4f7c8c33aabc5"
+      },
+      duration: 262956,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Keys N Krates',
+      trackName: "I Just Can't Deny",
+      trackImage: {
+        url: "https://i.scdn.co/image/eca1de5f0e6ec4b581659e8b5d218b9692d67c40"
+      },
+      duration: 240000,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Jai Wof',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: 248470,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    }
+  ];
 
 });

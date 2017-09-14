@@ -1,0 +1,32 @@
+/*==============================================================================
+                                Recently-Played
+==============================================================================*/
+.recent-container {
+  margin-top: 20px;
+}
+
+.recent-header {
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 16px;
+  margin-top: 8px;
+}
+
+.recent-item {
+  padding: 9px 0;
+}
+
+.recent-click {
+  cursor: pointer
+}
+
+.recent-item-track {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.recent-item-artist {
+  line-height: 16px;
+  font-size: 11px;
+}
