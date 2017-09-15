@@ -27,7 +27,6 @@
 html, body {
   width: 100%;
   font-family: circular-book;
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   color: hsla(0,0%,100%,.6);
   transition: color .2s;
@@ -136,7 +135,7 @@ h1 {
 }
 
 #music {
-  
+
 }
 
 

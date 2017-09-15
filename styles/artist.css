@@ -105,7 +105,7 @@
 ==============================================================================*/
 
 .track-container {
-  width: 60%;
+  width: 83.33333333%;
   margin: 0 auto;
   text-align: left;
   position: relative;
@@ -115,6 +115,7 @@
 }
 
 .track-container h2 {
+  text-align: center;
   font-size: 2rem;
   font-weight: 600;
   padding: .4em 1em
@@ -123,6 +124,15 @@
 .track-item {
   display: flex;
   align-items: center;
+  font-family: circular-light;
+}
+
+.track-item-number {
+  width: 48px;
+}
+
+.track-item-name {
+  font-size: 1.2em;
 }
 
 .track-item-play {
@@ -132,6 +142,7 @@
   background: #1db954;
   display: flex;
   cursor: pointer;
+  display: none;
 }
 
 .track-item-add {
@@ -144,8 +155,9 @@
   align-items: center;
   font-size: 35px;
   cursor: pointer;
+  display: none;
 }
 
 .track-item-duration {
-  justify-self: flex-end;
+
 }

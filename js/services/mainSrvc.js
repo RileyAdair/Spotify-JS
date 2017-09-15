@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQBF2-8bXcf-H3DcC_li8-9HZyOBgtvqhWfVADjIOkmF5mofuQv-8GI0n1BXx6L5mwPrbF-QDcYnGDHxquHowZktzKjDp69UJlG5vZfN0pT_WCVc2Yoa-wYNYtr5ZMSw3QAnFjDu1w7OgUGhtTsV7PDp7x5wRjo';
+  var accessToken = 'BQB2yyDeZp1e7ovELBr_sRsIO0UVVH40XtvECer_xFH02_KenRJjUlb3P1QKOZqGFTPZp1CY8xo3aCLJBwcPljPJtgfv66BZ4BRPSHUfb0MERsk88G6ewliJ68rFj5MHbybFkZszQpuTxy95yEUkRXD19k1nX9o';
   this.recent = 'recent';
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -34,7 +34,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       var results = response.data;
       var obj = {
         name: results.name,
-        followers: results.followers.total,
+        followers: results.followers.total.toLocaleString(),
         followLink: results.external_urls.spotify,
         image: results.images[0]
       }
@@ -51,14 +51,28 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     .then(function(response){
       var results = response.data.tracks;
       var tracksArr = [];
-      console.log(response);
+
+
       for(var i = 0; i < results.length; i++){
+
+        var duration = results[i].duration_ms
+
+        var convertDuration = function (millis) {
+          var minutes = Math.floor(millis / 60000);
+          var seconds = ((millis % 60000) / 1000).toFixed(0);
+          return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        duration = convertDuration(duration);
+        console.log(duration);
+
         var obj = {
+          number: i + 1 + '.',
           artistName: results[i].artists[0].name,
           trackName: results[i].name,
           trackImage: results[i].album.images[0],
           preview: results[i].preview_url,
-          duration: results[i].duration_ms,
+          duration: duration,
           link: results[i].uri,
         }
         tracksArr.push(obj);
