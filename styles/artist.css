@@ -142,7 +142,7 @@
   background: #1db954;
   display: flex;
   cursor: pointer;
-  display: none;
+  /*display: none;*/
 }
 
 .track-item-add {
@@ -155,7 +155,11 @@
   align-items: center;
   font-size: 35px;
   cursor: pointer;
-  display: none;
+  /*display: none;*/
+}
+
+.track-item-duration-container {
+  display: flex;
 }
 
 .track-item-duration {

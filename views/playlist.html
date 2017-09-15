@@ -1,0 +1,25 @@
+<section class="view-container">
+  <h1>playlist</h1>
+  <img ng-src="{{playlistInfo.image.url}}">
+  <h1>{{playlistInfo.name}}</h1>
+  <p>By <span>{{playlistInfo.owner}}</span></p>
+  <div>{{playlistInfo.description}}</div>
+  <p>{{playlistInfo.trackTotal}} SONGS</p>
+  <div class="artist-header-buttons">
+    <button class="btn btn-green">PLAY</button>
+  </div>
+  <!-- <a href="{{playlistInfo.link}}" target="_blank">FOLLOW</a> -->
+  <a href="https://www.spotify.com/us/" target="_blank">FOLLOW</a>
+  <section class="playlist-container">
+    <div class="playlist-item" ng-repeat="track in playlistTracks">
+      <span class="playlist-item-number">{{track.number}}</span>
+      <span class="playlist-item-name white">{{track.trackName}}</span>
+      <div>{{track.artistName}}</div>
+      <div class="playlist-item-duration-container">
+        <span class="playlist-item-duration">{{track.duration}}</span>
+      </div>
+      <span ng-click="playPreview(track)" class="track-item-play"></span>
+      <span ng-click="addTrack(track)" class="track-item-add">+</span>
+    </div>
+  </section>
+</section>

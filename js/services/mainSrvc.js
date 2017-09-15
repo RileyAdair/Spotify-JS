@@ -1,8 +1,8 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQB2yyDeZp1e7ovELBr_sRsIO0UVVH40XtvECer_xFH02_KenRJjUlb3P1QKOZqGFTPZp1CY8xo3aCLJBwcPljPJtgfv66BZ4BRPSHUfb0MERsk88G6ewliJ68rFj5MHbybFkZszQpuTxy95yEUkRXD19k1nX9o';
-  this.recent = 'recent';
+  var accessToken = 'BQBbQ9iUE8ZDu8TlTHpTt5Kz9-ZqoI1n0o_Ebenc00CHk_sEOYT14WksxDsZH7YmsZkbR8rByjiBRVp3SBwR-8rvRrxZ0uUqhFJ6M-jKXUUwFUQhhuPJ8cENIvf7z4hNWldO42JoTwL7jwpShZaNwsZ5j5oIzmE';
+
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
     var searchUrl = "https://api.spotify.com/v1/search?type=artist&limit=12&client_id" + clientId + '&q=' + str;
@@ -64,7 +64,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
         }
 
         duration = convertDuration(duration);
-        console.log(duration);
+        // console.log(duration);
 
         var obj = {
           number: i + 1 + '.',
@@ -99,25 +99,31 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
                               Pass-trackObj-to-bottomPlay
   ============================================================================*/
   this.playPreview = function(preview) {
-    // $sce to inject url
-    var trustPreview = $sce.trustAsResourceUrl(preview.preview);
+    if(preview.preview){
+      // $sce to inject url
+      var trustPreview = $sce.trustAsResourceUrl(preview.preview);
 
-    var trackObj = {
-      artistName: preview.artistName,
-      trackName: preview.trackName,
-      trackImage: preview.trackImage,
-      duration: preview.duration,
-      preview: trustPreview
+      var trackObj = {
+        artistName: preview.artistName,
+        trackName: preview.trackName,
+        trackImage: preview.trackImage,
+        duration: preview.duration,
+        preview: trustPreview
+      }
+      // Emit fires and passes trackObj on $rooteScope
+      $rootScope.$emit('songStorer', trackObj)
+      // console.log('new track');
+      // for(var i = 0; i < recentArr.length; i++){
+      //   if(artistName)
+      // }
+      this.recentArr.unshift(trackObj);
+      this.recentArr.pop();
+      // console.log(this.recentArr);
     }
-    // Emit fires and passes trackObj on $rooteScope
-    $rootScope.$emit('songStorer', trackObj)
-    console.log('new track');
-    // for(var i = 0; i < recentArr.length; i++){
-    //   if(artistName)
-    // }
-    this.recentArr.unshift(trackObj);
-    this.recentArr.pop();
-    // console.log(this.recentArr);
+
+    // make this a function that animates in at the top
+    else console.log('Spotify api is not providing this track');
+
   }
 
   /*============================================================================
@@ -184,7 +190,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   ============================================================================*/
   this.addTrack = function(trackObj){
     this.newPlaylistArr.unshift(trackObj);
-    console.log(this.newPlaylistArr);
+    // console.log(this.newPlaylistArr);
   }
   this.deleteNewTrack = function(trackObj){
     this.newPlaylistArr.splice(trackObj,1);
@@ -199,7 +205,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   ============================================================================*/
   this.playPlaylistPreview = function(preview) {
     $rootScope.$emit('songStorer', preview)
-    console.log('old track');
+    // console.log('old track');
   }
 
   /*============================================================================
@@ -236,5 +242,114 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
     }
   ];
+
+  /*============================================================================
+                            Featured-playlists-request
+  ============================================================================*/
+  this.getFeatured = function(){
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
+    var searchUrl = "https://api.spotify.com/v1/browse/featured-playlists";
+
+    return $http.get(searchUrl)
+
+    .then(function(response){
+
+      var results = response.data.playlists.items;
+      var playlistsArr = [];
+
+      for(var i = 0; i < results.length; i++){
+        var obj = {
+          name: results[i].name,
+          image: results[i].images[0],
+          id: results[i].id,
+          tracks: results[i].tracks.href,
+        }
+        playlistsArr.push(obj);
+      }
+      return playlistsArr;
+    })
+  }
+
+  this.getFeaturedMessage = function(){
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
+    var searchUrl = "https://api.spotify.com/v1/browse/featured-playlists";
+
+    return $http.get(searchUrl)
+
+    .then(function(response){
+
+      var results = response.data.message;
+
+      return results;
+    })
+  }
+
+  /*============================================================================
+                                Playlists-info-request
+  ============================================================================*/
+
+  this.getPlaylistInfo = function(tracks){
+    var tracks = (tracks.id);
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
+    var searchUrl = "https://api.spotify.com/v1/users/spotify/playlists/" + tracks;
+
+    return $http.get(searchUrl)
+
+    .then(function(response){
+      // console.log(results);
+      var results = response.data;
+
+      var playlistObj = {
+        name: results.name,
+        image: results.images[0],
+        owner: results.owner.display_name,
+        description: results.description,
+        link: results.external_urls.spotify,
+        trackTotal: results.tracks.total,
+        id: results.id
+      }
+
+      return (playlistObj);
+    })
+  }
+
+
+  this.getPlaylistTracks = function(tracks){
+    var tracks = (tracks.id);
+    $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
+    var searchUrl = "https://api.spotify.com/v1/users/spotify/playlists/" + tracks;
+
+    return $http.get(searchUrl)
+
+    .then(function(response){
+      var results = response.data.tracks.items;
+      var tracksArr = [];
+
+      for(var i = 0; i < results.length; i++){
+        var duration = results[i].track.duration_ms
+
+        var convertDuration = function (millis) {
+          var minutes = Math.floor(millis / 60000);
+          var seconds = ((millis % 60000) / 1000).toFixed(0);
+          return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        }
+        duration = convertDuration(duration);
+        // console.log(duration);
+
+        var obj = {
+          number: i + 1 + '.',
+          trackName: results[i].track.name,
+          duration: duration,
+          trackImage: results[i].track.album.images[0],
+          artistName: results[i].track.artists[0].name,
+          trackArtistId: results[i].track.artists[0].id,
+          preview: results[i].track.preview_url,
+        }
+        tracksArr.push(obj);
+
+      }
+      return tracksArr;
+    })
+  }
 
 });

@@ -9,6 +9,11 @@ var spotify = angular.module('app', ['ui.router'])
       templateUrl: '../views/home.html',
       controller: 'homeCtrl'
     })
+    .state('playlist', {
+      url: '/playlist/:id',
+      templateUrl: '../views/playlist.html',
+      controller: 'playlistCtrl'
+    })
     .state('search', {
       url: '/search',
       templateUrl: '../views/search.html',
@@ -16,7 +21,7 @@ var spotify = angular.module('app', ['ui.router'])
     })
     .state('artist', {
       url: '/artist/:id',
-      templateUrl: "../views/artist.html",
+      templateUrl: '../views/artist.html',
       controller: 'artistCtrl'
     })
     .state('music', {

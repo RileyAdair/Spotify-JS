@@ -1,4 +1,11 @@
-spotify.controller('musicCtrl', function($scope, mainSrvc) {
+spotify.controller('musicCtrl', function($scope, mainSrvc, $rootScope) {
+  $rootScope.musicActive = function(){
+    setTimeout(function(){ $('input').focus(); }, 100);
+    $('#music').css('color','#1db954');
+    $('.navBar-group-search').css('color','hsla(0,0%,100%,.6)');
+    $('#home').css('color','hsla(0,0%,100%,.6)');
+  }
+
   $scope.tracks = mainSrvc.playlistArr;
 
   $scope.newTracks = mainSrvc.newPlaylistArr;

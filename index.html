@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://use.typekit.net/njc2jfu.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <link rel="icon" href="http://designshack.net/favicon.ico">
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/search.css">
   <link rel="stylesheet" href="/styles/artist.css">
@@ -17,7 +18,7 @@
     <header class="header-container">
       <nav class="header-nav">
         <img class="header-logo" src="img/spotify-logo.png" ui-sref="home">
-        <ul ng-controller="searchCtrl" class="navBar-ul bold">
+        <ul class="navBar-ul bold">
           <div class="navBar-group">
             <div class="navBar-group-search flex justify-between link" ng-click="inputFocus()" ui-sref="search">
             <li class="navBar-item">Search</li>
@@ -26,8 +27,8 @@
             </div>
           </div>
           <div class="navBar-group">
-            <li id="home" ng-click="homeFocus()" class="navBar-item link" ui-sref="home">Home</li>
-            <li class="navBar-item link" ui-sref="music">Your Music</li>
+            <li id="home" ng-click="homeActive()" class="navBar-item link" ui-sref="home">Home</li>
+            <li id="music" ng-click="musicActive()"class="navBar-item link" ui-sref="music">Your Music</li>
           </div>
         </ul>
         <recent-play></recent-play>
@@ -37,18 +38,33 @@
     <ui-view></ui-view>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js" charset="utf-8"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.11/angular-filter.js" charset="utf-8"></script> -->
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/mediaelement-and-player.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/bottomPlayCtrl.js"></script>
     <script src="js/controllers/recentPlayCtrl.js"></script>
     <script src="js/controllers/searchCtrl.js"></script>
     <script src="js/controllers/artistCtrl.js"></script>
     <script src="js/controllers/homeCtrl.js"></script>
+    <script src="js/controllers/playlistCtrl.js"></script>
     <script src="js/controllers/musicCtrl.js"></script>
     <script src="js/services/mainSrvc.js"></script>
     <script src="js/directives/bottomPlay.js"></script>
     <script src="js/directives/recentPlay.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $('#audio-player').mediaelementplayer({
+        alwaysShowControls: true,
+        features: ['playpause','progress','volume'],
+        audioVolume: 'horizontal',
+        audioWidth: 450,
+        audioHeight: 70,
+        iPadUseNativeControls: true,
+        iPhoneUseNativeControls: true,
+        AndroidUseNativeControls: true
+      });
+    });
+    </script>
   </body>
 </html>

@@ -16,11 +16,13 @@
   <section class="track-container">
     <h2 class="letter-spacing white">Popular</h2>
     <div class="track-item" ng-repeat="track in tracks">
-      <div class="track-item-number">{{track.number}}</div>
-      <div class="track-item-name white">{{track.trackName}}</div>
-      <div class="track-item-duration">{{track.duration}}</div>
-      <div ng-click="playPreview(track)" class="track-item-play"></div>
-      <div ng-click="addTrack(track)" class="track-item-add">+</div>
+      <span class="track-item-number">{{track.number}}</span>
+      <span class="track-item-name white">{{track.trackName}}</span>
+      <div class="track-item-duration-container">
+        <span class="track-item-duration">{{track.duration}}</span>
+      </div>
+      <span ng-click="playPreview(track)" class="track-item-play"></span>
+      <span ng-click="addTrack(track)" class="track-item-add">+</span>
     </div>
   </section>
 </section>

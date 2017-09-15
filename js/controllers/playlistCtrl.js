@@ -1,15 +1,17 @@
-spotify.controller('artistCtrl', function($scope, $stateParams, mainSrvc) {
+spotify.controller('playlistCtrl', function($scope, $stateParams, mainSrvc) {
   /*============================================================================
-                              Get-artist-and-tracks
+                            Get-playlist-info-and-tracks
   ============================================================================*/
-  mainSrvc.getArtist($stateParams)
+  mainSrvc.getPlaylistInfo($stateParams)
   .then(function(response){
-      $scope.artist = response;
+      $scope.playlistInfo = response;
+      // console.log(response);
   })
-  mainSrvc.getTracks($stateParams)
+
+  mainSrvc.getPlaylistTracks($stateParams)
   .then(function(response){
-    // console.log(response);
-      $scope.tracks = response;
+      $scope.playlistTracks = response;
+      // console.log(response);
   })
 
   /*============================================================================
