@@ -2,7 +2,7 @@
                                 Recently-Played
 ==============================================================================*/
 .recent-container {
-  margin-top: 20px;
+
 }
 
 .recent-header {
@@ -11,6 +11,8 @@
   text-transform: uppercase;
   line-height: 16px;
   margin-top: 8px;
+  letter-spacing: 1px;
+  font-family: circular-light;
 }
 
 .recent-item {
@@ -18,11 +20,16 @@
 }
 
 .recent-click {
-  cursor: pointer
+  cursor: pointer;
+  transition: .2s;
+}
+
+.recent-click:hover .recent-item-track {
+  color: #fff;
 }
 
 .recent-item-track {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 22px;
 }
 

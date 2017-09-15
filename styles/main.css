@@ -1,3 +1,23 @@
+@font-face {
+    font-family: circular-black;
+    src: url('../assets/circular-black.woff2');
+}
+
+@font-face {
+    font-family: circular-bold;
+    src: url('../assets/circular-bold.woff2');
+}
+
+@font-face {
+    font-family: circular-book;
+    src: url('../assets/circular-book.woff2');
+}
+
+@font-face {
+    font-family: circular-light;
+    src: url('../assets/circular-light.woff2');
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,9 +26,8 @@
 
 html, body {
   width: 100%;
-  font-family: "proxima-nova",sans-serif;
+  font-family: circular-book;
   font-weight: 400;
-  letter-spacing: .6px;
   -webkit-font-smoothing: antialiased;
   color: hsla(0,0%,100%,.6);
   transition: color .2s;
@@ -16,16 +35,45 @@ html, body {
 }
 /*========== Fix Me ===============*/
 h1 {
-  font-weight: 800;
-  color: #fff;
+  font-family: circular-black;
+  /*font-weight: 800;*/
+  letter-spacing: .6px;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .bold {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .white {
   color: #fff;
+}
+
+.inline {
+  display: inline;
+}
+
+.link {
+  transition: .2s;
+}
+
+.link:hover {
+  color: #fff;
+}
+
+.no-hover:hover {
+  color: hsla(0,0%,100%,.6);
+}
+
+.letter-spacing {
+  letter-spacing: .6px;
 }
 
 .header-container {
@@ -35,24 +83,60 @@ h1 {
   left: 0;
   height: 100vh;
   z-index: 100;
-  padding: 20px;
+  padding: 24px;
+  padding-bottom: 95px;
   background-color: rgba(0,0,0,.6);
-}
-
-.header-ul {
-  list-style: none;
 }
 
 .header-logo {
   height: 34px;
   width: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
-.header-ul li {
+.navBar-ul {
+  font-family: circular-black;
+  list-style: none;
+  letter-spacing: .4px
+}
+
+.navBar-group {
+  border-top: 1px solid hsla(0,0%,100%,.25);
+  padding-bottom: 3px;
+  padding-top: 10px;
+}
+
+.navBar-group.no-border {
+  border-top: none;
+  border-bottom: 1px solid hsla(0,0%,100%,.25);
+}
+
+.navBar-group-search {
+  margin-bottom: 5px;
   cursor: pointer;
-  margin: 10px 0;
+}
+
+.navBar-item {
+  cursor: pointer;
   font-size: 16px;
+  padding: 3px 0;
   line-height: 26px;
+  margin-bottom: 6px;
+}
+
+.navBar-item-search {
+  height: 27px;
+  width: 27px;
+  transform: translateY(4px);
+}
+
+#home {
+
+}
+
+#music {
+  
 }
 
 

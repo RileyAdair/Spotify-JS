@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQCTTLTTrdMv0s9WmdYuP7apOx3HZvA9V-IzhxADvyNSyd28DBQobvAdwHJlylPJUCjQmgcTLdxfRF8OWDINMNasT-b_M83jaepq7lFWl0my2ic2heMyW4xqOXVS0vmvmbQ69md0I1kkfv-kt43fljqG_W0QT3w';
+  var accessToken = 'BQBF2-8bXcf-H3DcC_li8-9HZyOBgtvqhWfVADjIOkmF5mofuQv-8GI0n1BXx6L5mwPrbF-QDcYnGDHxquHowZktzKjDp69UJlG5vZfN0pT_WCVc2Yoa-wYNYtr5ZMSw3QAnFjDu1w7OgUGhtTsV7PDp7x5wRjo';
   this.recent = 'recent';
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -136,7 +136,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
     },
     {
-      artistName: 'Jai Wof',
+      artistName: 'Jai Wolf',
       trackName: "Indian Summer",
       trackImage: {
         url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
@@ -145,7 +145,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
     },
     {
-      artistName: 'Jai Wof',
+      artistName: 'Jai Wolf',
       trackName: "Indian Summer",
       trackImage: {
         url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
@@ -154,7 +154,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
     },
     {
-      artistName: 'Jai Wof',
+      artistName: 'Jai Wolf',
       trackName: "Indian Summer",
       trackImage: {
         url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
@@ -213,7 +213,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
     },
     {
-      artistName: 'Jai Wof',
+      artistName: 'Jai Wolf',
       trackName: "Indian Summer",
       trackImage: {
         url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
