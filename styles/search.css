@@ -37,9 +37,8 @@
 color: #515151;
 }
 
-.artist-img {
-  width: 100px;
-  height: 100px;
+
+
+.circle-img {
   border-radius: 50%;
-  cursor: pointer;
 }

@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQB1lSU657dslq_O19ffUI1SFvhhsZccHy37pB54ED9KR7nlDK_P4Dm7YbwRzptqs7A5OxbRLxlX4QUEN-TmRaHnTRD3bYUzmKGcfWxKEpSHg5JJl8iOd2mGcUCOIVUs4hJOy-TYghYcYsQvuaCXVpLK2batdP0';
+  var accessToken = 'BQDDTWlNhjxIHHVeIj-2agQtg97eam574Sr1iDU2LkDkhpQRi4eNmEnhrJKt9CLUTDW8AYe1KFcTmS-J4uUDWUfnY7TtpouMkxWyK66s7yWuVfsceugeUs7gWfcumetq98fvL1_WZR0IvsQKO0zscEYuvL7lxnc';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -84,13 +84,13 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   this.defaultPreview = function(){
     var trustPreview = $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f");
     var obj = {
-      artistName: 'ODESZA',
-      trackName: "Say My Name (feat. Zyra)",
+      artistName: 'Jai Wolf',
+      trackName: "Indian Summer",
       trackImage: {
-        url: "https://i.scdn.co/image/387b19d3bc6178b7429493f9fdf4f7c8c33aabc5"
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
       },
-      duration: 262956,
-      preview: trustPreview
+      duration: 248470,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
     }
     return obj;
   }
@@ -140,6 +140,15 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   ============================================================================*/
   this.recentArr = [
     {
+      artistName: 'Jai Wolf',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: 248470,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
       artistName: 'ODESZA',
       trackName: "Say My Name (feat. Zyra)",
       trackImage: {
@@ -174,17 +183,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       },
       duration: 248470,
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
-    },
-    {
-      artistName: 'Jai Wolf',
-      trackName: "Indian Summer",
-      trackImage: {
-        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
-      },
-      duration: 248470,
-      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
-    },
-
+    }
   ];
 
   /*============================================================================
@@ -260,13 +259,15 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       var playlistsArr = [];
 
       for(var i = 0; i < results.length; i++){
-        var obj = {
-          name: results[i].name,
-          image: results[i].images[0],
-          id: results[i].id,
-          tracks: results[i].tracks.href,
+        if(results[i].name){
+          var obj = {
+            name: results[i].name,
+            image: results[i].images[0],
+            id: results[i].id,
+            tracks: results[i].tracks.href,
+          }
+          playlistsArr.push(obj);
         }
-        playlistsArr.push(obj);
       }
       return playlistsArr;
     })

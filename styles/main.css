@@ -32,10 +32,9 @@ html, body {
   transition: color .2s;
   background: #181818;
 }
-/*========== Fix Me ===============*/
+
 h1 {
   font-family: circular-black;
-  /*font-weight: 800;*/
   letter-spacing: .6px;
 }
 
@@ -47,12 +46,24 @@ h1 {
   justify-content: space-between;
 }
 
-.bold {
-  font-weight: 800;
+.center {
+  text-align: center;
 }
 
 .white {
   color: #fff;
+}
+
+.light {
+  font-family: circular-light;
+}
+
+.bold {
+  font-family: circular-bold;
+}
+
+.black {
+  font-family: circular-black;
 }
 
 .inline {
@@ -69,6 +80,10 @@ h1 {
 
 .no-hover:hover {
   color: hsla(0,0%,100%,.6);
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .letter-spacing {
@@ -148,6 +163,7 @@ h1 {
   height: 100vh;
   padding-left: 220px;
   text-align: center;
+  position: relative;
 }
 
 .test {
@@ -158,4 +174,16 @@ h1 {
 }
 
 
-/*"https://i.scdn.co/image/cb080366dc8af1fe4dc90c4b9959794794884c66"*/
+/*==============================================================================
+                                backgrounds
+==============================================================================*/
+.background {
+  /*teal*/
+  background-image: linear-gradient(rgb(27, 111, 125), rgb(2, 11, 12) 85%);
+  background-image: linear-gradient(rgb(45, 83, 107), rgb(4, 8, 10) 85%);
+  background-image: linear-gradient(rgb(54, 82, 99), rgb(5, 8, 9) 85%);
+  background-image: linear-gradient(rgb(69, 79, 83), rgb(6, 7, 8) 85%);
+  /*maroon*/
+  background-image: linear-gradient(rgb(92, 61, 71), rgb(9, 6, 7) 85%);
+  background-image: linear-gradient(rgb(119, 33, 65), rgb(11, 3, 6) 85%);
+}

@@ -5,8 +5,39 @@
       <input class="search-input bold white" type="text" ng-model="searchStr" ng-keyup="searchMusic(searchStr)" placeholder="Start typing..." autofocus>
     </form>
   </div>
-  <div ng-repeat="artist in artists">
+
+
+  <div class="content-spacing">
+    <nav class="content-nav">
+      <p class="black">Artists</p>
+    </nav>
+
+      <section class="content-padding-bottom">
+        <h1 class="featured-header white bold">{{message}}</h1>
+        <div class="container-fluid">
+          <div class="container-flex">
+            <div class="featured-item" ng-repeat="artist in artists">
+              <div class="featured-cover">
+                <div class="featured-img-bg pointer circle-img" ui-sref="artist({id: artist.id})" ng-style="{'background-image': 'url(' + artist.image.url + ')'}"></div>
+                <!-- <img class="featured-img pointer" ng-src="{{playlist.image.url}}" ui-sref="playlist({id: playlist.id})" alt="null-image"> -->
+              </div>
+              <div class="featured-info center">
+              <p class="featured-info-name white light pointer" ui-sref="artist({id: artist.id})">{{artist.name}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+</div>
+
+
+
+
+  <!-- <div ng-repeat="artist in artists">
     <img class="artist-img" ng-src="{{artist.image.url}}" ui-sref="artist({id: artist.id})" alt="null-image">
     <h2>{{artist.name}}</h2>
-  </div>
+  </div> -->
+
+
 </section>

@@ -5,12 +5,11 @@ spotify.controller('homeCtrl', function($scope, mainSrvc, $rootScope) {
     $('.navBar-group-search').css('color','hsla(0,0%,100%,.6)');
     $('#music').css('color','hsla(0,0%,100%,.6)');
   }
-  $scope.test = 'Featured';
 
   mainSrvc.getFeatured()
   .then(function(response){
       $scope.playlists = response;
-      // console.log(response);
+      console.log(response);
   })
 
   mainSrvc.getFeaturedMessage()
