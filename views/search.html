@@ -8,16 +8,15 @@
 
 
   <div class="content-spacing">
-    <nav class="content-nav">
+    <nav class="content-nav search">
       <p class="black">Artists</p>
     </nav>
 
-      <section class="content-padding-bottom">
-        <h1 class="featured-header white bold">{{message}}</h1>
+      <section>
         <div class="container-fluid">
           <div class="container-flex">
             <div class="featured-item" ng-repeat="artist in artists">
-              <div class="featured-cover">
+              <div class="featured-cover search">
                 <div class="featured-img-bg pointer circle-img" ui-sref="artist({id: artist.id})" ng-style="{'background-image': 'url(' + artist.image.url + ')'}"></div>
                 <!-- <img class="featured-img pointer" ng-src="{{playlist.image.url}}" ui-sref="playlist({id: playlist.id})" alt="null-image"> -->
               </div>
@@ -28,8 +27,7 @@
         </div>
       </section>
     </div>
-
-</div>
+  </div>
 
 
 

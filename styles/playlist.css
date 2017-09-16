@@ -1,0 +1,102 @@
+/*==============================================================================
+                                  Playlist-view
+==============================================================================*/
+.spotify-bg-container.playlist {
+  /*background-image: linear-gradient(rgb(38, 115, 102), rgb(3, 11, 10) 85%);*/
+  /*background-image: linear-gradient(rgb(51, 62, 102), rgb(5, 6, 10) 85%);*/
+  background-image: linear-gradient(rgb(89, 57, 57), rgb(9, 6, 5) 85%)
+}
+
+.content-spacing.playlist {
+  padding: 2.5em 1.5em 0;
+}
+
+.container-fluid.playlist {
+  margin: 0 auto;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.col-container {
+  position: sticky;
+  top: 40px;
+  width: 33.333333333%;
+  float: left;
+  min-height: 1px;
+  padding-left: 8px;
+  padding-right: 8px;
+  vertical-align: baseline;
+}
+
+.col-content {
+  margin: 0 auto 1.5em;
+  text-align: center;
+  max-width: 400px;
+  display: block;
+}
+
+.col-playlist-info {
+  margin: 0 auto;
+  padding-bottom: 15px;
+  max-width: 320px;
+}
+
+.playlist-info {
+  height: auto;
+  font-size: 1.5em;
+  margin-bottom: .3em;
+  text-decoration: none;
+  margin: 13px 0 4px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlist-info-name {
+  font-size: 1.1em;
+  line-height: 1.5;
+  max-height: 3.52em;
+}
+
+.playlist-meta-info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 10px 0 2px;
+}
+
+.playlist-description {
+  margin-bottom: .95em;
+}
+
+.playlist-track-total {
+  font-size: .73em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: .95em;
+}
+
+.btn-green.playlist {
+  margin-right: 0;
+  margin-top: 12px;
+}
+
+.playlist-follow {
+  margin-top: 2em;
+  transition: .2s
+}
+
+.playlist-follow:hover {
+  transform: scale(1.05);
+}
+
+.follow {
+  color: #fff;
+  font-size: .82rem;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  letter-spacing: 2px;
+  white-space: normal;
+  will-change: transform;
+  text-transform: uppercase;
+}

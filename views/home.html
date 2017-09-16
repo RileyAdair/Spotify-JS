@@ -5,22 +5,22 @@
       <p class="black">Featured</p>
     </nav>
     <div class="content-spacing inner">
-      <section class="content-padding-bottom">
+      <section class="content-padding">
         <h1 class="featured-header white bold">{{message}}</h1>
         <div class="container-fluid">
           <div class="container-flex">
             <div class="featured-item" ng-repeat="playlist in playlists">
               <div class="featured-cover">
-                <div class="featured-img-bg pointer" ui-sref="playlist({id: playlist.id})" ng-style="{'background-image': 'url(' + playlist.image.url + ')'}"></div>
+              <div class="featured-img-bg pointer" ui-sref="playlist({id: playlist.id})" ng-style="{'background-image': 'url(' + playlist.image.url + ')'}"></div>
                 <!-- <img class="featured-img pointer" ng-src="{{playlist.image.url}}" ui-sref="playlist({id: playlist.id})" alt="null-image"> -->
-                </div>
+              </div>
               <div class="featured-info">
-              <p class="featured-info-name white light pointer" ui-sref="playlist({id: playlist.id})">{{playlist.name}}</p>
+                <p class="featured-info-name white light pointer" ui-sref="playlist({id: playlist.id})">{{playlist.name}}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   </div>
-</div>
 </section>

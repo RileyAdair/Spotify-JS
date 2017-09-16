@@ -1,14 +1,46 @@
+<div class="spotify-bg-container playlist"></div>
 <section class="view-container">
-  <h1>playlist</h1>
-  <img ng-src="{{playlistInfo.image.url}}">
-  <h1>{{playlistInfo.name}}</h1>
-  <p>By <span>{{playlistInfo.owner}}</span></p>
-  <div>{{playlistInfo.description}}</div>
+  <div class="content-spacing playlist">
+    <div class="container-fluid playlist">
+      <div class="col-container">
+        <div class="col-content">
+          <div class="col-playlist-info">
+            <div class="featured-cover">
+              <div class="featured-img-bg pointer" ng-style="{'background-image': 'url(' + playlistInfo.image.url + ')'}"></div>
+            </div>
+            <div class="playlist-info">
+             <p class="playlist-info-name black white">{{playlistInfo.name}}</p>
+            </div>
+            <div class="playlist-meta-info light">
+              <span>By </span>
+              <span class="white">{{playlistInfo.owner}}</span>
+            </div>
+          </div>
+          <p class="playlist-description light">{{playlistInfo.description}}</p>
+          <p class="playlist-track-total light">{{playlistInfo.trackTotal}} SONGS</p>
+          <button class="btn btn-green playlist">PLAY</button>
+          <!-- <a href="{{playlistInfo.link}}" target="_blank">FOLLOW</a> -->
+          <div class="playlist-follow">
+            <a class="follow" href="https://www.spotify.com/us/" target="_blank">FOLLOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<!--
+
+
+
   <p>{{playlistInfo.trackTotal}} SONGS</p>
   <div class="artist-header-buttons">
     <button class="btn btn-green">PLAY</button>
   </div>
-  <!-- <a href="{{playlistInfo.link}}" target="_blank">FOLLOW</a> -->
+  <a href="{{playlistInfo.link}}" target="_blank">FOLLOW</a>
   <a href="https://www.spotify.com/us/" target="_blank">FOLLOW</a>
   <section class="playlist-container">
     <div class="playlist-item" ng-repeat="track in playlistTracks">
@@ -21,5 +53,5 @@
       <span ng-click="playPreview(track)" class="track-item-play"></span>
       <span ng-click="addTrack(track)" class="track-item-add">+</span>
     </div>
-  </section>
+  </section> -->
 </section>
