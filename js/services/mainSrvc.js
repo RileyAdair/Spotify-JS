@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQBbQ9iUE8ZDu8TlTHpTt5Kz9-ZqoI1n0o_Ebenc00CHk_sEOYT14WksxDsZH7YmsZkbR8rByjiBRVp3SBwR-8rvRrxZ0uUqhFJ6M-jKXUUwFUQhhuPJ8cENIvf7z4hNWldO42JoTwL7jwpShZaNwsZ5j5oIzmE';
+  var accessToken = 'BQB1lSU657dslq_O19ffUI1SFvhhsZccHy37pB54ED9KR7nlDK_P4Dm7YbwRzptqs7A5OxbRLxlX4QUEN-TmRaHnTRD3bYUzmKGcfWxKEpSHg5JJl8iOd2mGcUCOIVUs4hJOy-TYghYcYsQvuaCXVpLK2batdP0';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -112,13 +112,15 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       }
       // Emit fires and passes trackObj on $rooteScope
       $rootScope.$emit('songStorer', trackObj)
-      // console.log('new track');
-      // for(var i = 0; i < recentArr.length; i++){
-      //   if(artistName)
-      // }
+
+      var playlistCheck = this.recentArr;
+      for(var i = 0; i < playlistCheck.length; i++) {
+        if(playlistCheck[i].trackName == trackObj.trackName) {
+          return;
+        }
+      }
       this.recentArr.unshift(trackObj);
       this.recentArr.pop();
-      // console.log(this.recentArr);
     }
 
     // make this a function that animates in at the top
@@ -188,7 +190,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   /*============================================================================
                             Add-to / Delete-from-playlist
   ============================================================================*/
-  this.addTrack = function(trackObj){
+  this.addTrack = function(trackObj,){
     this.newPlaylistArr.unshift(trackObj);
     // console.log(this.newPlaylistArr);
   }

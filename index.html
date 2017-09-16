@@ -6,12 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://use.typekit.net/njc2jfu.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
-  <link rel="icon" href="http://designshack.net/favicon.ico">
+  <link rel="icon" href="img/spotify.ico">
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/search.css">
   <link rel="stylesheet" href="/styles/artist.css">
   <link rel="stylesheet" href="/styles/bottomPlay.css">
   <link rel="stylesheet" href="/styles/recent.css">
+  <link rel="stylesheet" href="/styles/player.css">
   <title>ng-Spotify</title>
 </head>
   <body>
@@ -40,8 +41,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="js/mediaelement-and-player.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/player.js"></script>
     <script src="js/controllers/bottomPlayCtrl.js"></script>
     <script src="js/controllers/recentPlayCtrl.js"></script>
     <script src="js/controllers/searchCtrl.js"></script>
@@ -52,19 +53,5 @@
     <script src="js/services/mainSrvc.js"></script>
     <script src="js/directives/bottomPlay.js"></script>
     <script src="js/directives/recentPlay.js"></script>
-    <script type="text/javascript">
-    $(function(){
-      $('#audio-player').mediaelementplayer({
-        alwaysShowControls: true,
-        features: ['playpause','progress','volume'],
-        audioVolume: 'horizontal',
-        audioWidth: 450,
-        audioHeight: 70,
-        iPadUseNativeControls: true,
-        iPhoneUseNativeControls: true,
-        AndroidUseNativeControls: true
-      });
-    });
-    </script>
   </body>
 </html>
