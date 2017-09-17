@@ -91,7 +91,7 @@
 
 .featured-cover {
   position: relative;
-  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  box-shadow: 0 0 10px rgba(0,0,0,.35);
   padding-top: 100%;
   margin: 0;
   display: block;

@@ -250,4 +250,6 @@ a {
   /*blue-ish*/
   background-image: linear-gradient(rgb(52, 70, 100), rgb(5, 7, 10) 85%);
   background-image: linear-gradient(rgb(51, 62, 102), rgb(5, 6, 10) 85%);
+  /*orange-ish*/
+  background-image: linear-gradient(rgb(93, 59, 25), rgb(12, 7, 3) 85%);
 }

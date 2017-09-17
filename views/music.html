@@ -1,3 +1,88 @@
+<div class="spotify-bg-container your-music"></div>
+
+  <section class="view-container">
+      <div class="container-fluid playlist">
+        <section class="tracklist-container artist content-padding">
+          <!-- <h2 class="letter-spacing white">Popular</h2> -->
+          <nav class="content-nav">
+            <p class="black">Library</p>
+          </nav>
+
+          <div class="tracklist-row light" ng-repeat="track in newTracks track by $index">
+            <div class="tracklist-col tracklist-position-outer">
+              <div class="tracklist-play-pause tracklist-top-align" ng-click="playNewPreview(track)">
+                <i class="fa fa-play" aria-hidden="true"></i>
+              </div>
+              <div class="position tracklist-top-align">{{track.number}}</div>
+            </div>
+            <div class="tracklist-col name">
+              <div class="track-name-container tracklist-top-align">
+                <span class="tracklist-name white">{{track.trackName}}</span>
+                <span class="tracklist-artist">{{track.artistName}}</span>
+              </div>
+            </div>
+            <div class="tracklist-col more">
+              <div class="tracklist-add tracklist-top-align" ng-click="deleteNewTrack($index)">
+                <div class="tracklist-add-horizontal"></div>
+                <div class="tracklist-add-vertical"></div>
+              </div>
+            </div>
+            <div class="tracklist-col tracklist-col-duration">
+              <div class="tracklist-duration tracklist-top-align">
+                <span>{{track.duration}}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tracklist-row light" ng-repeat="track in tracks track by $index">
+            <div class="tracklist-col tracklist-position-outer">
+              <div class="tracklist-play-pause tracklist-top-align" ng-click="playPreview(track)">
+                <i class="fa fa-play" aria-hidden="true"></i>
+              </div>
+              <div class="position tracklist-top-align">{{track.number}}</div>
+            </div>
+            <div class="tracklist-col name">
+              <div class="track-name-container tracklist-top-align">
+                <span class="tracklist-name white">{{track.trackName}}</span>
+                <span class="tracklist-artist">{{track.artistName}}</span>
+              </div>
+            </div>
+            <div class="tracklist-col more">
+              <div class="tracklist-add tracklist-top-align" ng-click="deleteTrack($index)">
+                <div class="tracklist-add-horizontal"></div>
+                <div class="tracklist-add-vertical"></div>
+              </div>
+            </div>
+            <div class="tracklist-col tracklist-col-duration">
+              <div class="tracklist-duration tracklist-top-align">
+                <span>{{track.duration}}</span>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <section class="view-container ">
   <h1>playlist</h1>
   <section class="track-container">
@@ -17,4 +102,4 @@
       <div class="track-item-duration">{{track.artistName}}</div>
     </div>
   </section>
-</section>
+</section> -->

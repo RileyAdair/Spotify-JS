@@ -1,3 +1,15 @@
 /*==============================================================================
                                 Your-music-view
 ==============================================================================*/
+.spotify-bg-container.your-music {
+  background-image: linear-gradient(rgb(30, 51, 100), rgb(3, 6, 11) 85%);
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  left: 0;
+  top: 0;
+  position: fixed;
+  will-change: transform;
+  transition: background .5s ease;
+}

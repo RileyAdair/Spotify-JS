@@ -27,7 +27,7 @@
       </div>
 
       <section class="tracklist-container content-padding">
-        <div class="tracklist-row light" ng-repeat="track in playlistTracks">
+        <div class="tracklist-row light" ng-mouseenter="tracklistShow()" ng-mouseleave="tracklistHide()" ng-repeat="track in playlistTracks">
           <div class="tracklist-col tracklist-position-outer">
             <div class="tracklist-play-pause tracklist-top-align" ng-click="playPreview(track)">
               <i class="fa fa-play" aria-hidden="true"></i>

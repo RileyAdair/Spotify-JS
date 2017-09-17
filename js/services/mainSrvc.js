@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQDslbHJUSsErX_yBHT6HEtgHKqFvp7qYGqp59Ty4NRjaf52fUKmkJZsGuQxemD1T-DYOKbGA0iqUK3PBoyWbXKrCo7Bz2sSG25UeBG9ReP46opqwrIL6X3-jQwwRtMJ3NtglU7lnGthsGzzKIwcI4BenZ3BZ8A';
+  var accessToken = 'BQABfIU7Mzy5LYN6FjMR_tKJPNT9jkEbdsmvawcmFkyz7_6nqVs6032P2tR4tRRRp2Wr4p4R2r26uaeJ-cBdfk8df_mnsXAPHC5ls4lQe-gM5ljHWuBSmjRJJfltQ4Pe4JMu16MIitzxiVHK7vwwG6Vh2gqNkX0';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -221,7 +221,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       trackImage: {
         url: "https://i.scdn.co/image/387b19d3bc6178b7429493f9fdf4f7c8c33aabc5"
       },
-      duration: 262956,
+      duration: '4:23',
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f")
     },
     {
@@ -230,7 +230,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       trackImage: {
         url: "https://i.scdn.co/image/eca1de5f0e6ec4b581659e8b5d218b9692d67c40"
       },
-      duration: 240000,
+      duration: '4:00',
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
     },
     {
@@ -239,7 +239,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       trackImage: {
         url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
       },
-      duration: 248470,
+      duration: '4:08',
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
     }
   ];
@@ -354,5 +354,11 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       return tracksArr;
     })
   }
+
+
+  /*============================================================================
+                            Tracklist-hover-controls
+  ============================================================================*/
+
 
 });

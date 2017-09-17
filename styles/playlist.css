@@ -51,8 +51,8 @@
   text-decoration: none;
   margin: 13px 0 4px;
   width: 100%;
-  /*overflow: hidden;
-  text-overflow: ellipsis;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist-info-name {
@@ -62,8 +62,8 @@
 }
 
 .playlist-meta-info {
-  /*overflow: hidden;
-  text-overflow: ellipsis;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
   margin: 10px 0 2px;
 }
@@ -125,11 +125,12 @@
   -ms-user-select: none;
   user-select: none;
   cursor: default;
+  background: transparent;
 }
 
-.tracklist-row.active {
+/*.tracklist-row.active {
   background: rgba(9,9,9,.3);
-}
+}*/
 
 .tracklist-row:nth-child(1).position {letter-spacing: 1.6px;}
 .tracklist-row:nth-child(11).position {letter-spacing: 1.6px;}
@@ -141,8 +142,6 @@
 .tracklist-row:nth-child(71).position {letter-spacing: 1.6px;}
 .tracklist-row:nth-child(81).position {letter-spacing: 1.6px;}
 .tracklist-row:nth-child(91).position {letter-spacing: 1.6px;}
-
-
 
 .tracklist-col {
   display: block;
@@ -156,13 +155,6 @@
   position: relative;
 }
 
-.tracklist-play-pause {
-  display: none;
-  position: absolute;
-  top: 2px;
-  left: 19px;
-}
-
 .fa-play {
   color: #fff;
   cursor: pointer;
@@ -170,13 +162,9 @@
 
 .tracklist-top-align {
   margin-top: .5em;
-  /*overflow: hidden;
-  text-overflow: ellipsis;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.tracklist-top-align.position {
-  margin-top: .69em
 }
 
 .tracklist-col.name {
@@ -184,7 +172,7 @@
   -ms-flex: 1;
   flex: 1;
   width: 0;
-  /*overflow: hidden;*/
+  overflow: hidden;
 }
 
 .tracklist-artist {
@@ -200,15 +188,55 @@
   padding-right: 1em;
 }
 
-.tracklist-add {
-  display: none;
-  color: #fff;
+.tracklist-row:hover {
+  background: rgba(9,9,9,.4);
+}
+
+.tracklist-play-pause{
+  transition: all ease-in .2s;
+  position: absolute;
+  top: 2px;
+  left: 19px;
+  opacity: 0;
+  display: block;
   cursor: pointer;
+}
+
+.tracklist-play-pause {
+  opacity: 1;
+}
+
+
+/*.tracklist-play-pause.active {
+  opacity: 1;
+  display: block;
+}*/
+
+.position {
+  margin-top: .69em;
+  opacity: 1;
+  /*cursor: pointer;*/
+}
+
+.position.hide{
+  opacity: 0;
+}
+
+.tracklist-add {
+  transition: all .2s;
+  color: #fff;
   position: relative;
   width: 13px;
   height: 13px;
   padding: 13px;
+  margin-top: .45em;
   transform: translateY(6px);
+  cursor: pointer;
+  opacity: 0;
+}
+
+.tracklist-add.active {
+  opacity: 1;
 }
 
 .tracklist-add-horizontal {
