@@ -29,8 +29,6 @@ html, body {
   font-family: circular-book;
   -webkit-font-smoothing: antialiased;
   color: hsla(0,0%,100%,.6);
-  transition: color .2s;
-  transition: .2s;
   background: #181818;
 }
 
@@ -147,6 +145,7 @@ a {
   transition-property: transform,box-shadow,color,background-color;
   box-shadow: inset 0 0 0 2px #a0a0a0;
   margin-left: 8px;
+  transition: .2s
 }
 
 /*==============================================================================

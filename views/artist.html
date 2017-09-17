@@ -1,5 +1,4 @@
 <section class="view-container-artist">
-  <!-- <img ng-src="{{artist.image.url}}" alt=""> -->
   <div class="artist-background-container">
     <div class="artist-background" ng-style="{'background-image': 'url(' + artist.image.url + ')'}">
       <div class="artist-content">
@@ -7,14 +6,52 @@
         <h1 class="white">{{artist.name}}</h1>
         <div class="artist-header-buttons">
           <button class="btn btn-green">PLAY</button>
-          <button class="btn btn-black">FOLLOW</button>
+          <a class="follow" href="https://www.spotify.com/us/" target="_blank"><button class="btn btn-black">FOLLOW</button></a>
         </div>
 
       </div>
     </div>
   </div>
-  <section class="track-container">
-    <h2 class="letter-spacing white">Popular</h2>
+
+  <section class="track-bg-container">
+    <div class="view-container">
+        <div class="container-fluid playlist">
+          <section class="tracklist-container artist content-padding">
+            <h2 class="letter-spacing white">Popular</h2>
+            <div class="tracklist-row light" ng-repeat="track in tracks">
+              <div class="tracklist-col tracklist-position-outer">
+                <div class="tracklist-play-pause tracklist-top-align" ng-click="playPreview(track)">
+                  <i class="fa fa-play" aria-hidden="true"></i>
+                </div>
+                <div class="position tracklist-top-align">{{track.number}}</div>
+              </div>
+              <div class="tracklist-col name">
+                <div class="track-name-container tracklist-top-align">
+                  <span class="tracklist-name white">{{track.trackName}}</span>
+                </div>
+              </div>
+              <div class="tracklist-col more">
+                <div class="tracklist-add tracklist-top-align" ng-click="addTrack(track)">
+                  <div class="tracklist-add-horizontal"></div>
+                  <div class="tracklist-add-vertical"></div>
+                </div>
+              </div>
+              <div class="tracklist-col tracklist-col-duration">
+                <div class="tracklist-duration tracklist-top-align">
+                  <span>{{track.duration}}</span>
+                </div>
+              </div>
+            </div>
+          </section>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- <section class="track-container">
+
     <div class="track-item" ng-repeat="track in tracks">
       <span class="track-item-number">{{track.number}}</span>
       <span class="track-item-name white">{{track.trackName}}</span>
@@ -24,5 +61,5 @@
       <span ng-click="playPreview(track)" class="track-item-play"></span>
       <span ng-click="addTrack(track)" class="track-item-add">+</span>
     </div>
-  </section>
+  </section> -->
 </section>

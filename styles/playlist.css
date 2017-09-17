@@ -4,7 +4,8 @@
 .spotify-bg-container.playlist {
   /*background-image: linear-gradient(rgb(38, 115, 102), rgb(3, 11, 10) 85%);*/
   /*background-image: linear-gradient(rgb(51, 62, 102), rgb(5, 6, 10) 85%);*/
-  background-image: linear-gradient(rgb(89, 57, 57), rgb(9, 6, 5) 85%)
+  /*background-image: linear-gradient(rgb(89, 57, 57), rgb(9, 6, 5) 85%);*/
+  background-image: linear-gradient(rgb(89, 63, 83), rgb(8, 6, 8) 85%);
 }
 
 .content-spacing.playlist {
@@ -12,9 +13,11 @@
 }
 
 .container-fluid.playlist {
+  width: 100%;
   margin: 0 auto;
   padding-left: 8px;
   padding-right: 8px;
+  display: table;
 }
 
 .col-container {
@@ -29,7 +32,7 @@
 }
 
 .col-content {
-  margin: 0 auto 1.5em;
+  margin: 0 auto;
   text-align: center;
   max-width: 400px;
   display: block;
@@ -48,8 +51,8 @@
   text-decoration: none;
   margin: 13px 0 4px;
   width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /*overflow: hidden;
+  text-overflow: ellipsis;*/
 }
 
 .playlist-info-name {
@@ -59,8 +62,8 @@
 }
 
 .playlist-meta-info {
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /*overflow: hidden;
+  text-overflow: ellipsis;*/
   white-space: nowrap;
   margin: 10px 0 2px;
 }
@@ -99,4 +102,136 @@
   white-space: normal;
   will-change: transform;
   text-transform: uppercase;
+}
+
+/*==============================================================================
+                                  Tracklist
+==============================================================================*/
+.tracklist-container {
+  margin: 0 auto;
+  padding-left: 3px;
+  padding-right: 8px;
+  width: 66.666666666%;
+  float: left;
+  transform: translateY(-6px);
+}
+
+.tracklist-row {
+  display: flex;
+  height: 4.56em;
+  transition: background-color .2s linear;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.tracklist-row.active {
+  background: rgba(9,9,9,.3);
+}
+
+.tracklist-row:nth-child(1).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(11).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(21).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(31).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(41).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(51).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(61).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(71).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(81).position {letter-spacing: 1.6px;}
+.tracklist-row:nth-child(91).position {letter-spacing: 1.6px;}
+
+
+
+.tracklist-col {
+  display: block;
+  height: 4.56em;
+}
+
+.tracklist-position-outer {
+  text-align: right;
+  padding-right: 1.3em;
+  width: 3.3em;
+  position: relative;
+}
+
+.tracklist-play-pause {
+  display: none;
+  position: absolute;
+  top: 2px;
+  left: 19px;
+}
+
+.fa-play {
+  color: #fff;
+  cursor: pointer;
+}
+
+.tracklist-top-align {
+  margin-top: .5em;
+  /*overflow: hidden;
+  text-overflow: ellipsis;*/
+  white-space: nowrap;
+}
+
+.tracklist-top-align.position {
+  margin-top: .69em
+}
+
+.tracklist-col.name {
+  text-align: left;
+  -ms-flex: 1;
+  flex: 1;
+  width: 0;
+  /*overflow: hidden;*/
+}
+
+.tracklist-artist {
+  display: block;
+}
+
+.tracklist-name {
+  font-size: 1.2em;
+}
+
+.tracklist-col.more {
+  text-align: right;
+  padding-right: 1em;
+}
+
+.tracklist-add {
+  display: none;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  width: 13px;
+  height: 13px;
+  padding: 13px;
+  transform: translateY(6px);
+}
+
+.tracklist-add-horizontal {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 13px;
+  height: 1px;
+  background: #fff;
+}
+
+.tracklist-add-vertical{
+  position: absolute;
+  top: 0;
+  left: 6px;
+  height: 13px;
+  width: 1px;
+  background: #fff;
+}
+
+.tracklist-col-duration {
+  text-align: right;
+  padding-right: 1em;
+  width: 3.9em;
+  letter-spacing: .6px;
 }

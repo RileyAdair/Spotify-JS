@@ -25,33 +25,34 @@
           </div>
         </div>
       </div>
+
+      <section class="tracklist-container content-padding">
+        <div class="tracklist-row light" ng-repeat="track in playlistTracks">
+          <div class="tracklist-col tracklist-position-outer">
+            <div class="tracklist-play-pause tracklist-top-align" ng-click="playPreview(track)">
+              <i class="fa fa-play" aria-hidden="true"></i>
+            </div>
+            <div class="position tracklist-top-align">{{track.number}}</div>
+          </div>
+          <div class="tracklist-col name">
+            <div class="track-name-container tracklist-top-align">
+              <span class="tracklist-name white">{{track.trackName}}</span>
+              <span class="tracklist-artist">{{track.artistName}}</span>
+            </div>
+          </div>
+          <div class="tracklist-col more">
+            <div class="tracklist-add tracklist-top-align" ng-click="addTrack(track)">
+              <div class="tracklist-add-horizontal"></div>
+              <div class="tracklist-add-vertical"></div>
+            </div>
+          </div>
+          <div class="tracklist-col tracklist-col-duration">
+            <div class="tracklist-duration tracklist-top-align">
+              <span>{{track.duration}}</span>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </div>
-
-
-
-
-
-<!--
-
-
-
-  <p>{{playlistInfo.trackTotal}} SONGS</p>
-  <div class="artist-header-buttons">
-    <button class="btn btn-green">PLAY</button>
-  </div>
-  <a href="{{playlistInfo.link}}" target="_blank">FOLLOW</a>
-  <a href="https://www.spotify.com/us/" target="_blank">FOLLOW</a>
-  <section class="playlist-container">
-    <div class="playlist-item" ng-repeat="track in playlistTracks">
-      <span class="playlist-item-number">{{track.number}}</span>
-      <span class="playlist-item-name white">{{track.trackName}}</span>
-      <div>{{track.artistName}}</div>
-      <div class="playlist-item-duration-container">
-        <span class="playlist-item-duration">{{track.duration}}</span>
-      </div>
-      <span ng-click="playPreview(track)" class="track-item-play"></span>
-      <span ng-click="addTrack(track)" class="track-item-add">+</span>
-    </div>
-  </section> -->
 </section>

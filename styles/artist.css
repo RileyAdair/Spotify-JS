@@ -58,65 +58,21 @@
 /*==============================================================================
                                 tracks-container
 ==============================================================================*/
-
-.track-container {
-  width: 83.33333333%;
-  margin: 0 auto;
-  text-align: left;
-  position: relative;
-  z-index: 1;
-  padding-left: 220px;
-  padding-top: 18px;
+.track-bg-container {
+  width: 100%;
+  background: #181818;
 }
 
-.track-container h2 {
+.track-bg-container h2 {
   text-align: center;
   font-size: 2rem;
   font-weight: 600;
-  padding: .4em 1em
+  padding: 1.2em 0 1.5em;
 }
 
-.track-item {
-  display: flex;
-  align-items: center;
-  font-family: circular-light;
-}
-
-.track-item-number {
-  width: 48px;
-}
-
-.track-item-name {
-  font-size: 1.2em;
-}
-
-.track-item-play {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  background: #1db954;
-  display: flex;
-  cursor: pointer;
-  /*display: none;*/
-}
-
-.track-item-add {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  background: grey;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 35px;
-  cursor: pointer;
-  /*display: none;*/
-}
-
-.track-item-duration-container {
-  display: flex;
-}
-
-.track-item-duration {
-
+.tracklist-container.artist {
+  margin: 0 auto;
+  padding: 0 2em;
+  width: 83.333333333%;
+  float: none;
 }

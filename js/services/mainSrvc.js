@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQCLE9fjsJJ2yoKuEqQy88bwotTpgKr8mu93ktvFUREIuKNm5L6ai0hLJXxofhLicJ7IqwsqBN4iS6XNMKv8qp-vUf_-evZVaeVnepAvIrX7qy_l51Hg-cZ-w3CTrhuUuGzd7kBxh_Wdjm0IIoGVYyHT2h_qetw';
+  var accessToken = 'BQDslbHJUSsErX_yBHT6HEtgHKqFvp7qYGqp59Ty4NRjaf52fUKmkJZsGuQxemD1T-DYOKbGA0iqUK3PBoyWbXKrCo7Bz2sSG25UeBG9ReP46opqwrIL6X3-jQwwRtMJ3NtglU7lnGthsGzzKIwcI4BenZ3BZ8A';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
