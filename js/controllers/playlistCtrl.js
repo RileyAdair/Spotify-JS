@@ -1,25 +1,7 @@
 spotify.controller('playlistCtrl', function($scope, $stateParams, mainSrvc, $rootScope) {
 
-  $rootScope.tracklistShow = function(){
-    $('body').on('mouseenter','.tracklist-row', function(){
-      $(this).find('.tracklist-add').addClass('active');
-      // $(this).find('.tracklist-play-pause').addClass('active');
-      // $(this).find('.position').addClass('hide');
-
-    });
-  }
-
-  $rootScope.tracklistHide = function(){
-    $('body').on('mouseleave','.tracklist-row', function(){
-      $(this).find('.tracklist-add').removeClass('active');
-      // $(this).find('.tracklist-play-pause').removeClass('active');
-      // $(this).find('.position').removeClass('hide');
-    });
-  }
-
-
-
-
+  // Shows Saved to Your Music message
+  $rootScope.showMessage = mainSrvc.showMessage;
 
   /*============================================================================
                             Get-playlist-info-and-tracks
@@ -34,6 +16,8 @@ spotify.controller('playlistCtrl', function($scope, $stateParams, mainSrvc, $roo
   .then(function(response){
       $scope.playlistTracks = response;
       // console.log(response);
+      $scope.songLength = response.length;
+      console.log(response.length);
   })
 
   /*============================================================================

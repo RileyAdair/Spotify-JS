@@ -1,10 +1,5 @@
 spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
 
-
-
-
-
-
   $rootScope.$on('songStorer', function(event, track){
 
     $scope.track = track;

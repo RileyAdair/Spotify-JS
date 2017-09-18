@@ -317,3 +317,29 @@ div#fader { display: flex;}
   border: 0;
   outline: 0;
 }
+
+/*Terry*/
+.terry {
+  position: absolute;
+  top: 40%;
+  left: 55%;
+  width: 300px;
+  height: 300px;
+  margin-top: -250px; /* Half the height */
+  margin-left: -250px;
+  z-index: 300;
+  animation: changesize 1.3s infinite alternate;
+}
+
+.terry img {
+  width: 300px;
+  height: 300px;
+}
+
+@keyframes changesize {
+	0%   { transform: scale(0.8);}
+	25%  { transform: scale(1.5); line-height: 30vh;}
+  50% { transform: scale(0.8);}
+  75% { transform: scale(1.5); line-height: 100vh;}
+  100% { transform: scale(0.8);}
+}

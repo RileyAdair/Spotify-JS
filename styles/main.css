@@ -234,6 +234,43 @@ a {
   z-index: 100;
 }
 
+/*==============================================================================
+                            Add-track-to-your-music
+==============================================================================*/
+.add-track-message {
+  transition: 2s;
+  position: fixed;
+  top: -58px;
+  left: 0;
+  right: 0;
+  height: 58px;
+  line-height: 58px;
+  padding-left: 25px;
+  width: 100%;
+  background: #1db954;
+  z-index: 200;
+}
+
+.add-track-message.active{
+  animation: drop-down 3s ;
+}
+
+@keyframes drop-down {
+    0% {
+        top: -58px;
+    }
+    10% {
+        top: 0;
+    }
+    90% {
+        top: 0;
+    }
+    100% {
+        top: -58px;
+    }
+}
+
+
 
 /*==============================================================================
                                 backgrounds

@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQAPUZwpUvEwpKgTZgdp6RPTsstL66UsoMQyYHQV-V4mLtiRxaGrU6AfjPz8gNalHgaQ0Vp99qaUv_42qbLKgn10ALX3GAW3LMi1P5Zsmn6HXcgpbWtJPwjzw2YdmVrzOAnxJQ-MBM0UVCnw_T3uFpO2Qzqxgx0';
+  var accessToken = 'BQCobfqqvv7kJVAcAL2GU80h9QBYtz1VxH_3jkJjAH0RgWOdAHHGBRx3EkpQ3FfndRFl5LTg_-u3wuxkiGt7q1WpPTgfrkSnv_OfJSGeGw53q46j_vtOSrlKvmJn4DS58eXJsR84g7nRQrTuX0937J3Uh_u5zqw';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -49,33 +49,37 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     var tracksUrl = "https://api.spotify.com/v1/artists/" + tracks + "/top-tracks?country=US";
     return $http.get(tracksUrl)
     .then(function(response){
+
       var results = response.data.tracks;
       var tracksArr = [];
 
 
       for(var i = 0; i < results.length; i++){
 
-        var duration = results[i].duration_ms
+        if(results[i].preview_url){
+          var duration = results[i].duration_ms
 
-        var convertDuration = function (millis) {
-          var minutes = Math.floor(millis / 60000);
-          var seconds = ((millis % 60000) / 1000).toFixed(0);
-          return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+          var convertDuration = function (millis) {
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+          }
+
+          duration = convertDuration(duration);
+          // console.log(duration);
+
+          var obj = {
+            number: i + 1 + '.',
+            artistName: results[i].artists[0].name,
+            trackName: results[i].name,
+            trackImage: results[i].album.images[0],
+            preview: results[i].preview_url,
+            duration: duration,
+            link: results[i].uri,
+          }
+          tracksArr.push(obj);
         }
 
-        duration = convertDuration(duration);
-        // console.log(duration);
-
-        var obj = {
-          number: i + 1 + '.',
-          artistName: results[i].artists[0].name,
-          trackName: results[i].name,
-          trackImage: results[i].album.images[0],
-          preview: results[i].preview_url,
-          duration: duration,
-          link: results[i].uri,
-        }
-        tracksArr.push(obj);
       }
       return tracksArr;
     })
@@ -84,13 +88,13 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   this.defaultPreview = function(){
     var trustPreview = $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f");
     var obj = {
-      artistName: 'Jai Wolf',
-      trackName: "Indian Summer",
+      artistName: 'Flume',
+      trackName: "Say It - Illenium Remix",
       trackImage: {
-        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+        url: "https://i.scdn.co/image/85db39a03d486ed4e232b44a30fd44cbe873fb6d"
       },
-      duration: 248470,
-      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+      duration: 267200,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/129fdc7870c9a2e0672df4c216ad177cf362d720?cid=132684ee2f514226955d32a0637b472f")
     }
     return obj;
   }
@@ -140,13 +144,13 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   ============================================================================*/
   this.recentArr = [
     {
-      artistName: 'Jai Wolf',
-      trackName: "Indian Summer",
+      artistName: 'Flume',
+      trackName: "Say It - Illenium Remix",
       trackImage: {
-        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+        url: "https://i.scdn.co/image/85db39a03d486ed4e232b44a30fd44cbe873fb6d"
       },
-      duration: 248470,
-      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+      duration: 267200,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/129fdc7870c9a2e0672df4c216ad177cf362d720?cid=132684ee2f514226955d32a0637b472f")
     },
     {
       artistName: 'ODESZA',
@@ -158,6 +162,24 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f")
     },
     {
+      artistName: 'Porter Robinson',
+      trackName: "Shelter",
+      trackImage: {
+        url: "https://i.scdn.co/image/86d2ea59969c263d3c82d5ef37013b9a3f18807c"
+      },
+      duration: 218964,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/2312e9b4429d32218bf18778afb4dca0b25ac3f5?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Jai Wolf',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: 248470,
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
       artistName: 'Keys N Krates',
       trackName: "I Just Can't Deny",
       trackImage: {
@@ -165,24 +187,6 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       },
       duration: 240000,
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
-    },
-    {
-      artistName: 'Jai Wolf',
-      trackName: "Indian Summer",
-      trackImage: {
-        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
-      },
-      duration: 248470,
-      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
-    },
-    {
-      artistName: 'Jai Wolf',
-      trackName: "Indian Summer",
-      trackImage: {
-        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
-      },
-      duration: 248470,
-      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
     }
   ];
 
@@ -216,6 +220,15 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
 
   this.playlistArr = [
     {
+      artistName: 'Flume',
+      trackName: "Say It - Illenium Remix",
+      trackImage: {
+        url: "https://i.scdn.co/image/85db39a03d486ed4e232b44a30fd44cbe873fb6d"
+      },
+      duration: '4:27',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/129fdc7870c9a2e0672df4c216ad177cf362d720?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
       artistName: 'ODESZA',
       trackName: "Say My Name (feat. Zyra)",
       trackImage: {
@@ -223,6 +236,24 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       },
       duration: '4:23',
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Porter Robinson',
+      trackName: "Shelter",
+      trackImage: {
+        url: "https://i.scdn.co/image/86d2ea59969c263d3c82d5ef37013b9a3f18807c"
+      },
+      duration: '3:39',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/2312e9b4429d32218bf18778afb4dca0b25ac3f5?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Jai Wolf',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: '4:08',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
     },
     {
       artistName: 'Keys N Krates',
@@ -234,6 +265,33 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
     },
     {
+      artistName: 'Flume',
+      trackName: "Say It - Illenium Remix",
+      trackImage: {
+        url: "https://i.scdn.co/image/85db39a03d486ed4e232b44a30fd44cbe873fb6d"
+      },
+      duration: '4:27',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/129fdc7870c9a2e0672df4c216ad177cf362d720?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'ODESZA',
+      trackName: "Say My Name (feat. Zyra)",
+      trackImage: {
+        url: "https://i.scdn.co/image/387b19d3bc6178b7429493f9fdf4f7c8c33aabc5"
+      },
+      duration: '4:23',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Porter Robinson',
+      trackName: "Shelter",
+      trackImage: {
+        url: "https://i.scdn.co/image/86d2ea59969c263d3c82d5ef37013b9a3f18807c"
+      },
+      duration: '3:39',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/2312e9b4429d32218bf18778afb4dca0b25ac3f5?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
       artistName: 'Jai Wolf',
       trackName: "Indian Summer",
       trackImage: {
@@ -241,6 +299,60 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       },
       duration: '4:08',
       preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Keys N Krates',
+      trackName: "I Just Can't Deny",
+      trackImage: {
+        url: "https://i.scdn.co/image/eca1de5f0e6ec4b581659e8b5d218b9692d67c40"
+      },
+      duration: '4:00',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Flume',
+      trackName: "Say It - Illenium Remix",
+      trackImage: {
+        url: "https://i.scdn.co/image/85db39a03d486ed4e232b44a30fd44cbe873fb6d"
+      },
+      duration: '4:27',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/129fdc7870c9a2e0672df4c216ad177cf362d720?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'ODESZA',
+      trackName: "Say My Name (feat. Zyra)",
+      trackImage: {
+        url: "https://i.scdn.co/image/387b19d3bc6178b7429493f9fdf4f7c8c33aabc5"
+      },
+      duration: '4:23',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/855e3c8923f2ae2993716af7919d9aeca9511773?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Porter Robinson',
+      trackName: "Shelter",
+      trackImage: {
+        url: "https://i.scdn.co/image/86d2ea59969c263d3c82d5ef37013b9a3f18807c"
+      },
+      duration: '3:39',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/2312e9b4429d32218bf18778afb4dca0b25ac3f5?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Jai Wolf',
+      trackName: "Indian Summer",
+      trackImage: {
+        url: "https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20"
+      },
+      duration: '4:08',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/7e9ae33b812a6a80652c6c3226cbafaad8bfb689?cid=132684ee2f514226955d32a0637b472f")
+    },
+    {
+      artistName: 'Keys N Krates',
+      trackName: "I Just Can't Deny",
+      trackImage: {
+        url: "https://i.scdn.co/image/eca1de5f0e6ec4b581659e8b5d218b9692d67c40"
+      },
+      duration: '4:00',
+      preview: $sce.trustAsResourceUrl("https://p.scdn.co/mp3-preview/0ba1568c07e51cb16832ee1699c45b9f0b70fe00?cid=132684ee2f514226955d32a0637b472f")
     }
   ];
 
@@ -329,36 +441,40 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       var tracksArr = [];
 
       for(var i = 0; i < results.length; i++){
-        var duration = results[i].track.duration_ms
 
-        var convertDuration = function (millis) {
-          var minutes = Math.floor(millis / 60000);
-          var seconds = ((millis % 60000) / 1000).toFixed(0);
-          return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-        }
-        duration = convertDuration(duration);
-        // console.log(duration);
+        if(results[i].track.preview_url){
+          var duration = results[i].track.duration_ms
 
-        var obj = {
-          number: i + 1 + '.',
-          trackName: results[i].track.name,
-          duration: duration,
-          trackImage: results[i].track.album.images[0],
-          artistName: results[i].track.artists[0].name,
-          trackArtistId: results[i].track.artists[0].id,
-          preview: results[i].track.preview_url,
+          var convertDuration = function (millis) {
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+          }
+          duration = convertDuration(duration);
+          // console.log(duration);
+
+          var obj = {
+            number: i + 1 + '.',
+            trackName: results[i].track.name,
+            duration: duration,
+            trackImage: results[i].track.album.images[0],
+            artistName: results[i].track.artists[0].name,
+            trackArtistId: results[i].track.artists[0].id,
+            preview: results[i].track.preview_url,
+          }
+          tracksArr.push(obj);
+
         }
-        tracksArr.push(obj);
 
       }
       return tracksArr;
     })
   }
-
-
-  /*============================================================================
-                            Tracklist-hover-controls
-  ============================================================================*/
-
+  // Shows Saved to Your Music message
+  this.showMessage = function() {
+    $('body').find('.add-track-message').addClass('active');
+    console.log('added!');
+    setTimeout(function(){ $('.add-track-message').removeClass('active'); console.log('removed'); }, 3000);
+  }
 
 });

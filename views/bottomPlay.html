@@ -1,8 +1,10 @@
+<div class="terry" ng-if="showTerry"><img src="img/terry.png" alt="Terry"></div>
+
 <div class="bottomPlay-container">
   <footer class="bottom-play-bar-container">
     <div class="bottom-play-bar">
       <div class="bottom-play-bar_left">
-        <img class="cover-art-image" ng-src="{{track.trackImage.url}}" src="https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20">
+        <img class="cover-art-image" ng-mouseenter="showTerry=true" ng-mouseleave="showTerry=false" ng-src="{{track.trackImage.url}}" src="https://i.scdn.co/image/d247578ffb8aa69273db9e5ae0371ab59b43bd20">
       <div class="track-info white">
         <div class="track-info_track">{{track.trackName}}</div>
         <div class="track-info_artist">{{track.artistName}}</div>

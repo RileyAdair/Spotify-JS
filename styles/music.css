@@ -27,11 +27,11 @@
 }
 
 .tracklist-col.music {
-  margin-top: 10px;
+  margin-top: 11px;
 }
 
 .tracklist-add.music {
-  transform: rotate(45deg);
+  transform: rotate(45deg) scale(1.2);
   text-align: right;
   padding-right: 1em;
 }

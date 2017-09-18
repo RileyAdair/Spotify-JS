@@ -5,7 +5,7 @@ spotify.controller('homeCtrl', function($scope, mainSrvc, $rootScope) {
   mainSrvc.getFeatured()
   .then(function(response){
       $scope.playlists = response;
-      console.log(response);
+      // console.log(response);
   })
 
   mainSrvc.getFeaturedMessage()

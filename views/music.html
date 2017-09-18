@@ -13,7 +13,13 @@
               <div class="tracklist-play-pause tracklist-top-align" ng-if="showPlay" ng-click="playNewPreview(track)">
                 <i class="fa fa-play" aria-hidden="true"></i>
               </div>
+              <!--
+
+              Need to restructure and combine old and new playlist arrays in mainSrvc
+
+            -->
               <!-- <div class="position tracklist-top-align" ng-hide="showPlay">{{track.number}}</div> -->
+              <!-- <div class="position tracklist-top-align" ng-hide="showPlay">{{$index + 1}}</div> -->
             </div>
             <div class="tracklist-col name">
               <div class="track-name-container tracklist-top-align">

@@ -1,4 +1,8 @@
-spotify.controller('artistCtrl', function($scope, $stateParams, mainSrvc) {
+spotify.controller('artistCtrl', function($scope, $stateParams, mainSrvc, $rootScope) {
+
+  // Shows Saved to Your Music message
+  $rootScope.showMessage = mainSrvc.showMessage;
+
   /*============================================================================
                               Get-artist-and-tracks
   ============================================================================*/
