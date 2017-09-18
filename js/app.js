@@ -1,4 +1,4 @@
-var spotify = angular.module('app', ['ui.router'])
+var spotify = angular.module('app', ['ui.router', 'ngAnimate'])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/');

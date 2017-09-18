@@ -13,3 +13,25 @@
   will-change: transform;
   transition: background .5s ease;
 }
+
+.content-nav.music {
+  margin-bottom: 18px;
+}
+
+.tracklist-container.music {
+  margin: 0 auto;
+  padding: 0 2em;
+  padding-bottom: 180px;
+  width: 88%;
+  float: none;
+}
+
+.tracklist-col.music {
+  margin-top: 10px;
+}
+
+.tracklist-add.music {
+  transform: rotate(45deg);
+  text-align: right;
+  padding-right: 1em;
+}

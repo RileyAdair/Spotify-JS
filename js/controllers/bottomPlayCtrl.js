@@ -1,29 +1,51 @@
 spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
 
+
+
+
+
+
   $rootScope.$on('songStorer', function(event, track){
-    // console.log(track);
+
     $scope.track = track;
+
+    console.log($scope.track);
+
+    var pauseButton = document.getElementById("pause");
+
+    if(pauseButton.innerText === "Play"){
+      audioTrack.play();
+      setText(pauseButton, "Pause");
+    }
+    else {
+      audioTrack.pause();
+      setText(pauseButton, "Play");
+    }
+
     $('audio').attr('autoplay', 'true');
+
+    console.log(pauseButton.innerText);
   })
 
   $scope.track = mainSrvc.defaultPreview();
+
   function player() {
     if (audioTrack.paused) {
-  	setText(this, "Pause");
-  	audioTrack.play();
-  	} else {
-  	setText(this,"Play");
-  	audioTrack.pause();
-  	}
+    setText(this, "Pause");
+    audioTrack.play();
+    } else {
+    setText(this,"Play");
+    audioTrack.pause();
+    }
   }
 
   function setText(el,text) {
-  	el.innerHTML = text;
+    el.innerHTML = text;
   }
 
   function finish() {
-  		audioTrack.currentTime = 0;
-  		setText(playButton,"Play");
+      audioTrack.currentTime = 0;
+      setText(playButton,"Play");
   }
 
   function updatePlayhead() {
@@ -37,25 +59,25 @@ spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
   }
 
   function volumizer() {
-  	if (audioTrack.volume == 0) { setText(muteButton,"volume"); }
-  	else { setText(muteButton,"volumehigh"); }
+    if (audioTrack.volume == 0) { setText(muteButton,"volume"); }
+    else { setText(muteButton,"volumehigh"); }
   }
 
   function muter() {
-  	if (audioTrack.volume == 0) {
-  		audioTrack.volume = restoreValue;
-  		volumeSlider.value = restoreValue;
-  	} else {
-  		audioTrack.volume = 0;
-  		restoreValue = volumeSlider.value;
-  		volumeSlider.value = 0;
-  	}
+    if (audioTrack.volume == 0) {
+      audioTrack.volume = restoreValue;
+      volumeSlider.value = restoreValue;
+    } else {
+      audioTrack.volume = 0;
+      restoreValue = volumeSlider.value;
+      volumeSlider.value = 0;
+    }
   }
 
   function setAttributes(el, attrs) {
-  	for(var key in attrs){
-  		el.setAttribute(key, attrs[key]);
-  	}
+    for(var key in attrs){
+      el.setAttribute(key, attrs[key]);
+    }
   }
 
   var audioPlayer = document.getElementById("audioplayer"),
@@ -70,7 +92,7 @@ spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
   volumeSlider = document.createElement("input");
   setText(playButton, "Play");
   setText(muteButton, "volumehigh");
-  setAttributes(playButton, { "type": "button", "class": "ss-icon", "id": "pause" });
+  setAttributes(playButton, { "type": "button", "class": "ss-icon", "id": "pause", "attribute": "autoplay" });
   setAttributes(muteButton, { "type": "button", "class": "ss-icon", "id": "mute" });
   setAttributes(volumeSlider, { "type": "range", "min": "0", "max": "1", "step": "any", "value": "1", "id": "volumeSlider" });
   var duration = audioTrack.duration;
@@ -87,5 +109,12 @@ spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
   audioTrack.addEventListener('playing', function(){ playhead.max = audioTrack.duration; }, false);
   audioTrack.addEventListener('timeupdate', updatePlayhead, false);
   audioTrack.addEventListener('ended', finish, false);
+
+
+
+
+
+
+
 
 });
