@@ -16,7 +16,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       for(var i = 0; i < results.length; i++){
         var obj = {
           name: results[i].name,
-          image: results[i].images[0] || {url:"../img/default-icon.jpg"},
+          image: results[i].images[0] || {url:"img/default-icon.jpg"},
           id: results[i].id
         }
         artistArr.push(obj);
