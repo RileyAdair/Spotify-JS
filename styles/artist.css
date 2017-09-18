@@ -70,9 +70,11 @@
   padding: 1.2em 0 1.5em;
 }
 
+/*Added padding-bottom*/
 .tracklist-container.artist {
   margin: 0 auto;
   padding: 0 2em;
+  padding-bottom: 146px;
   width: 83.333333333%;
   float: none;
 }

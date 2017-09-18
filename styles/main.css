@@ -127,6 +127,10 @@ a {
   transform: scale(1.05);
 }
 
+.btn:focus {
+  outline: none;
+}
+
 .btn-green {
   background-color: #1db954;
   padding: 11px 44px 12px;
@@ -238,7 +242,6 @@ a {
                             Add-track-to-your-music
 ==============================================================================*/
 .add-track-message {
-  transition: 2s;
   position: fixed;
   top: -58px;
   left: 0;
@@ -249,10 +252,12 @@ a {
   width: 100%;
   background: #1db954;
   z-index: 200;
+  opacity: 0;
 }
 
 .add-track-message.active{
   animation: drop-down 3s ;
+  opacity: 1;
 }
 
 @keyframes drop-down {
