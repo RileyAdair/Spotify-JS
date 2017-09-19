@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQBbFpZKLqb80BrAib6XaTaI2HHIR1RND9_gjv_ADywiq2dm-ZUQbaQjg4bcGmmw6KIbsC3kby031qxhRLD9XJhBZseqLahzU5_G0jyFsC5ppx27x1b-BN10giKrG_sF_6aILJE5DF8taWbbchJXBcGmnfzKiQ0';
+  var accessToken = 'BQBguRLTLndqYebrmvpbzUJ0AqNd2x5qzD2c9ekKUxBDREq9BEf6D_R37OYE7QAt1g2XS0aed-z5cMC5okwERMDDkOGsC9ZnKEXQ_GmQRR-AmPq7qzvDk-_dGoWPsTkVDJNYMAB0XbyLTudn3B9kqorBFU--9yw';
 
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -193,7 +193,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   /*============================================================================
                             Add-to / Delete-from-playlist
   ============================================================================*/
-  this.addTrack = function(trackObj,){
+  this.addTrack = function(trackObj){
     this.newPlaylistArr.unshift(trackObj);
     // console.log(this.newPlaylistArr);
   }
