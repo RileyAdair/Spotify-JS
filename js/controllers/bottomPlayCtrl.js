@@ -3,27 +3,38 @@ spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
   $rootScope.$on('songStorer', function(event, track){
 
     $scope.track = track;
-
-    console.log($scope.track);
-
     var pauseButton = document.getElementById("pause");
+    $scope.$watch('track',function(newValue, oldValue) {
+      if(newValue != oldValue) {
 
-    if(pauseButton.innerText === "Play"){
-      audioTrack.play();
-      setText(pauseButton, "Pause");
-    }
-    else {
-      audioTrack.pause();
-      setText(pauseButton, "Play");
-    }
+        if(pauseButton.innerText === "Play"){
+          audioTrack.play();
+        }
+        else if(pauseButton.innerText === "Pause") {
+          audioTrack.pause();
+          setText(pauseButton, "Play");
+        }
 
-    $('audio').attr('autoplay', 'true');
+      }
+      else {
+        if(pauseButton.innerText === "Play"){
+          audioTrack.play();
+          setText(pauseButton, "Pause");
+        }
+        else if(pauseButton.innerText === "Pause") {
+          audioTrack.pause();
+          setText(pauseButton, "Play");
+        }
+      }
 
-    console.log(pauseButton.innerText);
+    },true);
+    // console.log($scope.track);
+    // console.log(pauseButton.innerText);
   })
 
   $scope.track = mainSrvc.defaultPreview();
 
+  // bottomPlay controls
   function player() {
     if (audioTrack.paused) {
     setText(this, "Pause");
@@ -104,12 +115,4 @@ spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
   audioTrack.addEventListener('playing', function(){ playhead.max = audioTrack.duration; }, false);
   audioTrack.addEventListener('timeupdate', updatePlayhead, false);
   audioTrack.addEventListener('ended', finish, false);
-
-
-
-
-
-
-
-
 });

@@ -11,7 +11,9 @@
           <div class="container-flex">
             <div class="featured-item" ng-repeat="playlist in playlists">
               <div class="featured-cover">
-              <div class="featured-img-bg pointer" ui-sref="playlist({id: playlist.id})" ng-style="{'background-image': 'url(' + playlist.image.url + ')'}"></div>
+                <i class="fa fa-play cover-play" aria-hidden="true" ui-sref="playlist({id: playlist.id})"></i>
+                <div class="featured-bg-cover" ui-sref="playlist({id: playlist.id})"></div>
+                <div class="featured-img-bg pointer" ng-style="{'background-image': 'url(' + playlist.image.url + ')'}"></div>
                 <!-- <img class="featured-img pointer" ng-src="{{playlist.image.url}}" ui-sref="playlist({id: playlist.id})" alt="null-image"> -->
               </div>
               <div class="featured-info">
