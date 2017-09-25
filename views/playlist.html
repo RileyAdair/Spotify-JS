@@ -1,10 +1,13 @@
-<div class="add-track-message white" ><i class="fa fa-check" aria-hidden="true"></i> Saved to Your Music</div>
+<!-- Featured Playlist view --------------------------------------------------->
 
+<!-- Saved to Your Music message bar -->
+<div class="add-track-message white" ><i class="fa fa-check" aria-hidden="true"></i> Saved to Your Music</div>
 <div class="spotify-bg-container playlist"></div>
-<section class="view-container">
+<main class="view-container">
   <div class="content-spacing playlist">
     <div class="container-fluid playlist">
-      <div class="col-container">
+      <!-- Left column - Playlist info -->
+      <section class="col-container">
         <div class="col-content">
           <div class="col-playlist-info">
             <div class="featured-cover">
@@ -21,25 +24,23 @@
           <p class="playlist-description light">{{playlistInfo.description}}</p>
           <p class="playlist-track-total light">{{songLength}} SONGS</p>
           <button class="btn btn-green playlist">PLAY</button>
-          <!-- <a href="{{playlistInfo.link}}" target="_blank">FOLLOW</a> -->
           <div class="playlist-follow">
             <a class="follow" href="https://www.spotify.com/us/" target="_blank">FOLLOW</a>
           </div>
         </div>
-      </div>
-
+      </section>
+      <!-- Right column - Tracklist -->
       <section class="tracklist-container content-padding">
         <div class="tracklist-row light" ng-mouseenter="showPlay=true" ng-mouseleave="showPlay=false" ng-repeat="track in playlistTracks">
-          <!-- <div class="tracklist-row light" ng-mouseenter="tracklistShow()" ng-mouseleave="tracklistHide()" ng-repeat="track in playlistTracks"> -->
           <div class="tracklist-col tracklist-position-outer">
-            <div class="tracklist-play-pause tracklist-top-align" ng-if="showPlay" ng-click="playPreview(track)">
+            <div class="tracklist-play-pause tracklist-top-align" ng-if="showPlay" ng-click="playPreview(track); selectToggle($index)">
               <i class="fa fa-play" aria-hidden="true"></i>
             </div>
             <div class="position tracklist-top-align" ng-hide="showPlay">{{$index + 1 + '.'}}</div>
           </div>
           <div class="tracklist-col name">
             <div class="track-name-container tracklist-top-align">
-              <span class="tracklist-name white">{{track.trackName}}</span>
+              <span class="tracklist-name" ng-class="{selected: $index == selected}">{{track.trackName}}</span>
               <span class="tracklist-artist">{{track.artistName}}</span>
             </div>
           </div>
@@ -49,7 +50,7 @@
               <div class="tracklist-add-vertical"></div>
             </div>
           </div>
-          <div class="tracklist-col tracklist-col-duration">
+          <div class="tracklist-col tracklist-col-duration" ng-class="{selected: $index == selected}">
             <div class="tracklist-duration tracklist-top-align">
               <span>{{track.duration}}</span>
             </div>
@@ -58,4 +59,4 @@
       </section>
     </div>
   </div>
-</section>
+</main>

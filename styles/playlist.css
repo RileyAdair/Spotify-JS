@@ -2,9 +2,6 @@
                                   Playlist-view
 ==============================================================================*/
 .spotify-bg-container.playlist {
-  /*background-image: linear-gradient(rgb(38, 115, 102), rgb(3, 11, 10) 85%);*/
-  /*background-image: linear-gradient(rgb(51, 62, 102), rgb(5, 6, 10) 85%);*/
-  /*background-image: linear-gradient(rgb(89, 57, 57), rgb(9, 6, 5) 85%);*/
   background-image: linear-gradient(rgb(89, 63, 83), rgb(8, 6, 8) 85%);
 }
 
@@ -128,10 +125,6 @@
   background: transparent;
 }
 
-/*.tracklist-row.active {
-  background: rgba(9,9,9,.3);
-}*/
-
 .tracklist-row:nth-child(1).position {letter-spacing: 1.6px;}
 .tracklist-row:nth-child(11).position {letter-spacing: 1.6px;}
 .tracklist-row:nth-child(21).position {letter-spacing: 1.6px;}
@@ -182,6 +175,15 @@
 
 .tracklist-name {
   font-size: 1.2em;
+  color: #fff;
+}
+
+.tracklist-name.selected {
+  color: #1ED760;
+}
+
+.tracklist-name.previousSelected {
+  color: #1ED760;
 }
 
 .tracklist-col.more {
@@ -194,10 +196,7 @@
 }
 
 .tracklist-play-pause.ng-enter{
-  /*transition: .2s linear all;*/
   position: relative;
-  /*top: 2px;
-  left: 19px;*/
   opacity: 0;
   cursor: pointer;
 }
@@ -219,11 +218,6 @@
   margin-top: .45em;
   transform: translateY(6px);
   cursor: pointer;
-  /*opacity: 0;*/
-}
-
-.tracklist-add.active {
-  opacity: 1;
 }
 
 .tracklist-add-horizontal {
@@ -249,4 +243,12 @@
   padding-right: 1em;
   width: 3.9em;
   letter-spacing: .6px;
+}
+
+.tracklist-col-duration.selected {
+  color: #1ED760;
+}
+
+.tracklist-col-duration.previousSelected {
+  color: #1ED760;
 }

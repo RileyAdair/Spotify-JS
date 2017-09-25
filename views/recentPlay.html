@@ -1,9 +1,11 @@
-<section class="recent-container navBar-group">
+<!-- Recently played sidebar  ------------------------------------------------->
+
+<main class="recent-container navBar-group">
   <h3 class="recent-header">Recently Played</h3>
   <div class="recent-item" ng-repeat="recent in recentArr">
-    <div class="recent-click" ng-click="playPreview(recent)">
+    <div class="recent-click" ng-click="playPreview(recent); selectToggle(recent); previousSelectToggle()">
       <div class="recent-item-track link">{{recent.trackName}}</div>
       <div class="recent-item-artist">{{recent.artistName}}</div>
     </div>
   </div>
-</section>
+</main>

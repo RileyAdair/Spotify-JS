@@ -3,6 +3,12 @@ spotify.controller('playlistCtrl', function($scope, $stateParams, mainSrvc, $roo
   // Shows Saved to Your Music message
   $rootScope.showMessage = mainSrvc.showMessage;
 
+  // Changes active track color to green
+  $rootScope.selected = -1;
+  $rootScope.selectToggle = function(index) {
+    $rootScope.selected = index;
+  }
+
   /*============================================================================
                             Get-playlist-info-and-tracks
   ============================================================================*/

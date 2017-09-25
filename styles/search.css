@@ -41,6 +41,10 @@ color: #515151;
   border-radius: 50%;
 }
 
+.featured-bg-cover.search {
+  border-radius: 50%;
+}
+
 .circle-img {
   border-radius: 50%;
 }

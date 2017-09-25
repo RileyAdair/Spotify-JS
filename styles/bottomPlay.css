@@ -1,5 +1,5 @@
 /*==============================================================================
-                                bottom-play-bar
+                                Bottom-playbar
 ==============================================================================*/
 .bottomPlay-container {
   background-color: #181818;
@@ -318,7 +318,6 @@ div#fader { display: flex;}
   outline: 0;
 }
 
-/*Terry*/
 .terry {
   position: fixed;
   top: 40%;
