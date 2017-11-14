@@ -1,21 +1,21 @@
 @font-face {
     font-family: circular-black;
-    src: url('../assets/circular-black.woff2');
+    src: url('../assets/font/circular-black.woff2');
 }
 
 @font-face {
     font-family: circular-bold;
-    src: url('../assets/circular-bold.woff2');
+    src: url('../assets/font/circular-bold.woff2');
 }
 
 @font-face {
     font-family: circular-book;
-    src: url('../assets/circular-book.woff2');
+    src: url('../assets/font/circular-book.woff2');
 }
 
 @font-face {
     font-family: circular-light;
-    src: url('../assets/circular-light.woff2');
+    src: url('../assets/font/circular-light.woff2');
 }
 
 * {
@@ -258,7 +258,14 @@ a {
     }
 }
 
+.fadein {
+  animation: fadein .5s;
+}
 
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 
 /*==============================================================================
                                 backgrounds

@@ -67,6 +67,7 @@
 
 .playlist-description {
   margin-bottom: .95em;
+  word-wrap: break-word;
 }
 
 .playlist-track-total {

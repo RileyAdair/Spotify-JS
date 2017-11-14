@@ -1,7 +1,7 @@
 <!-- Your Music view -->
 
 <div class="spotify-bg-container your-music"></div>
-<section class="view-container">
+<section class="view-container fadein">
     <div class="container-fluid playlist">
       <section class="tracklist-container music content-padding">
         <nav class="content-nav music">
@@ -9,7 +9,7 @@
         </nav>
         <div class="tracklist-row light" ng-mouseenter="showPlay=true" ng-mouseleave="showPlay=false" ng-repeat="track in newTracks track by $index">
           <div class="tracklist-col tracklist-position-outer">
-            <div class="tracklist-play-pause tracklist-top-align" ng-if="showPlay" ng-click="playNewPreview(track); selectToggle($index)">
+            <div class="tracklist-play-pause tracklist-top-align" ng-if="showPlay" ng-click="playNewPreview(track); selectToggle($index); previousSelectToggle()">
               <i class="fa fa-play" aria-hidden="true"></i>
             </div>
           </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="tracklist-row light" ng-mouseenter="showPlay=true" ng-mouseleave="showPlay=false" ng-repeat="track in tracks track by $index">
           <div class="tracklist-col tracklist-position-outer">
-            <div class="tracklist-play-pause tracklist-top-align" ng-if="showPlay" ng-click="playPreview(track); previousSelectToggle($index)">
+            <div class="tracklist-play-pause tracklist-top-align" ng-if="showPlay" ng-click="playPreview(track); previousSelectToggle($index); selectToggle()">
               <i class="fa fa-play" aria-hidden="true"></i>
             </div>
             <!-- <div class="position tracklist-top-align">{{track.number}}</div> -->
