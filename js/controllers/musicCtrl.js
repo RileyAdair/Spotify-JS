@@ -16,6 +16,18 @@ spotify.controller('musicCtrl', function($scope, mainSrvc, $rootScope) {
     console.log('delete old track');
   }
 
+  // Changes active track color to green
+  $rootScope.selected = -1;
+  $rootScope.selectToggle = function(index) {
+    $rootScope.selected = index;
+  }
+
+  // Changes active track color to green
+  $rootScope.previousSelected = -1;
+  $rootScope.previousSelectToggle = function(index) {
+    $rootScope.previousSelected = index;
+  }
+
   /*============================================================================
                             Pass-trackObj-to-service
   ============================================================================*/

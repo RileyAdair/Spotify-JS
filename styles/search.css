@@ -37,7 +37,15 @@
 color: #515151;
 }
 
+.search-results-container {
+  padding-bottom: 100px;
+}
+
 .featured-cover.search {
+  border-radius: 50%;
+}
+
+.featured-bg-cover.search {
   border-radius: 50%;
 }
 

@@ -1,21 +1,21 @@
 @font-face {
     font-family: circular-black;
-    src: url('../assets/circular-black.woff2');
+    src: url('../assets/font/circular-black.woff2');
 }
 
 @font-face {
     font-family: circular-bold;
-    src: url('../assets/circular-bold.woff2');
+    src: url('../assets/font/circular-bold.woff2');
 }
 
 @font-face {
     font-family: circular-book;
-    src: url('../assets/circular-book.woff2');
+    src: url('../assets/font/circular-book.woff2');
 }
 
 @font-face {
     font-family: circular-light;
-    src: url('../assets/circular-light.woff2');
+    src: url('../assets/font/circular-light.woff2');
 }
 
 * {
@@ -127,6 +127,10 @@ a {
   transform: scale(1.05);
 }
 
+.btn:focus {
+  outline: none;
+}
+
 .btn-green {
   background-color: #1db954;
   padding: 11px 44px 12px;
@@ -206,16 +210,6 @@ a {
   transform: translateY(4px);
 }
 
-#home {
-
-}
-
-#music {
-
-}
-
-
-
 /*==============================================================================
                                 view-container
 ==============================================================================*/
@@ -227,18 +221,10 @@ a {
   position: relative;
 }
 
-.test {
-  position: absolute;
-  bottom: 200px;
-  right: 300px;
-  z-index: 100;
-}
-
 /*==============================================================================
                             Add-track-to-your-music
 ==============================================================================*/
 .add-track-message {
-  transition: 2s;
   position: fixed;
   top: -58px;
   left: 0;
@@ -249,10 +235,12 @@ a {
   width: 100%;
   background: #1db954;
   z-index: 200;
+  opacity: 0;
 }
 
 .add-track-message.active{
   animation: drop-down 3s ;
+  opacity: 1;
 }
 
 @keyframes drop-down {
@@ -270,7 +258,14 @@ a {
     }
 }
 
+.fadein {
+  animation: fadein .5s;
+}
 
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 
 /*==============================================================================
                                 backgrounds

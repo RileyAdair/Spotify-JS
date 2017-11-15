@@ -2,34 +2,53 @@ spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
 
   $rootScope.$on('songStorer', function(event, track){
 
+    // Toggle Play/Pause button in bottomPlay from Tracklist-Play buttons
     $scope.track = track;
-
-    console.log($scope.track);
-
     var pauseButton = document.getElementById("pause");
+    $scope.$watch('track',function(newValue, oldValue) {
+      if(newValue != oldValue) {
 
-    if(pauseButton.innerText === "Play"){
-      audioTrack.play();
-      setText(pauseButton, "Pause");
-    }
-    else {
-      audioTrack.pause();
-      setText(pauseButton, "Play");
-    }
+        if(pauseButton.innerText === "Play"){
+          audioTrack.play();
+          pauseButton.style.transform = 'translateX(-1.3px)';
+        }
+        else if(pauseButton.innerText === "Pause") {
+          audioTrack.pause();
+          setText(pauseButton, "Play");
+          pauseButton.removeAttribute('style');
+        }
 
-    $('audio').attr('autoplay', 'true');
+      }
+      else {
+        if(pauseButton.innerText === "Play"){
+          audioTrack.play();
+          setText(pauseButton, "Pause");
+          pauseButton.style.transform = 'translateX(-1.3px)';
+          // console.log(pauseButton);
+        }
+        else if(pauseButton.innerText === "Pause") {
+          audioTrack.pause();
+          setText(pauseButton, "Play");
+          pauseButton.removeAttribute('style');
+        }
+      }
 
-    console.log(pauseButton.innerText);
+    },true);
+
   })
 
   $scope.track = mainSrvc.defaultPreview();
 
+  // bottomPlay controls
   function player() {
+    var pauseButton = document.getElementById("pause");
     if (audioTrack.paused) {
     setText(this, "Pause");
+    pauseButton.style.transform = 'translateX(-1.3px)';
     audioTrack.play();
     } else {
     setText(this,"Play");
+    pauseButton.removeAttribute('style');
     audioTrack.pause();
     }
   }
@@ -104,12 +123,4 @@ spotify.controller('bottomPlayCtrl', function($scope, mainSrvc, $rootScope) {
   audioTrack.addEventListener('playing', function(){ playhead.max = audioTrack.duration; }, false);
   audioTrack.addEventListener('timeupdate', updatePlayhead, false);
   audioTrack.addEventListener('ended', finish, false);
-
-
-
-
-
-
-
-
 });

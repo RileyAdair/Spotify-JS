@@ -4,25 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://use.typekit.net/njc2jfu.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
-  <link rel="icon" href="img/spotify.ico">
+  <link rel="icon" href="assets/icons/spotify.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/home.css">
-  <link rel="stylesheet" href="/styles/playlist.css">
-  <link rel="stylesheet" href="/styles/search.css">
-  <link rel="stylesheet" href="/styles/artist.css">
-  <link rel="stylesheet" href="/styles/music.css">
-  <link rel="stylesheet" href="/styles/bottomPlay.css">
-  <link rel="stylesheet" href="/styles/recent.css">
-  <link rel="stylesheet" href="/styles/player.css">
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="stylesheet" href="./styles/home.css">
+  <link rel="stylesheet" href="./styles/playlist.css">
+  <link rel="stylesheet" href="./styles/search.css">
+  <link rel="stylesheet" href="./styles/artist.css">
+  <link rel="stylesheet" href="./styles/music.css">
+  <link rel="stylesheet" href="./styles/bottomPlay.css">
+  <link rel="stylesheet" href="./styles/recent.css">
   <title>Spotify</title>
 </head>
   <body>
     <header class="header-container">
       <nav class="header-nav">
-        <img class="header-logo" src="img/spotify-logo.png" ui-sref="home">
+        <img class="header-logo" src="assets/icons/spotify-logo.png" ui-sref="home">
         <ul class="navBar-ul bold">
           <div class="navBar-group">
             <div class="navBar-group-search flex justify-between link" ng-click="inputFocus()" ui-sref="search">
@@ -41,28 +38,22 @@
     </header>
       <bottom-play></bottom-play>
     <ui-view></ui-view>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js" charset="utf-8"></script> -->
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.min.js" charset="utf-8"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" charset="utf-8"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js" charset="utf-8"></script> -->
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js" charset="utf-8"></script>
+    <!-- removed .min -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/controllers/bottomPlayCtrl.js"></script>
-    <script src="js/controllers/recentPlayCtrl.js"></script>
-    <script src="js/controllers/searchCtrl.js"></script>
-    <script src="js/controllers/artistCtrl.js"></script>
-    <script src="js/controllers/homeCtrl.js"></script>
-    <script src="js/controllers/playlistCtrl.js"></script>
-    <script src="js/controllers/musicCtrl.js"></script>
-    <script src="js/services/mainSrvc.js"></script>
-    <script src="js/directives/bottomPlay.js"></script>
-    <script src="js/directives/recentPlay.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/player.js"></script>
+    <script src="./js/controllers/bottomPlayCtrl.js"></script>
+    <script src="./js/controllers/recentPlayCtrl.js"></script>
+    <script src="./js/controllers/searchCtrl.js"></script>
+    <script src="./js/controllers/artistCtrl.js"></script>
+    <script src="./js/controllers/homeCtrl.js"></script>
+    <script src="./js/controllers/playlistCtrl.js"></script>
+    <script src="./js/controllers/musicCtrl.js"></script>
+    <script src="./js/services/mainSrvc.js"></script>
+    <script src="./js/directives/bottomPlay.js"></script>
+    <script src="./js/directives/recentPlay.js"></script>
   </body>
 </html>

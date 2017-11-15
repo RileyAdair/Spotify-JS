@@ -1,8 +1,11 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQDP8ultnAOmqTlz_VwjiQZ1K7y5AXMBqogZ96ziAuRubCEiL952mETjf5l7OJrWhw_UlL4X5e71hq8lbirGljwPR-s7vY1mWr_GRaxh7kyQzQ7iuSc3EPA7v0VeG7W05B69ltgGBO7PyHMq1NHgMEjgVj1rFbo';
+  var accessToken = 'BQC6ER3z8s2izDnbTM2KbTdOP8u4dO7uqU_T4s4522xqLiadeO692tYCNJGrvU6fqytDprxdFdskDqPIeDuQMcwr4mBmo0PkkfKwTVTVlHJej2Ozrw4dc3izJzekUTzH5jyv9jkwpClURyepcm6LmP77QOI1AQ';
 
+  /*============================================================================
+                              Search-for-Artist
+  ============================================================================*/
   this.searchMusic = function(str){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
     var searchUrl = "https://api.spotify.com/v1/search?type=artist&limit=12&client_id" + clientId + '&q=' + str;
@@ -16,7 +19,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       for(var i = 0; i < results.length; i++){
         var obj = {
           name: results[i].name,
-          image: results[i].images[0] || {url:"../img/default-icon.jpg"},
+          image: results[i].images[0] || {url:"assets/icons/default-icon.jpg"},
           id: results[i].id
         }
         artistArr.push(obj);
@@ -25,6 +28,9 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     })
   }
 
+  /*============================================================================
+                              Artist-Info-Request
+  ============================================================================*/
   this.getArtist = function(artist){
     var artist = artist.id;
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -43,6 +49,9 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     })
   }
 
+  /*============================================================================
+                              Artist-Tracks-Request
+  ============================================================================*/
   this.getTracks = function(tracks){
     var tracks = tracks.id;
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
@@ -66,7 +75,6 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
           }
 
           duration = convertDuration(duration);
-          // console.log(duration);
 
           var obj = {
             number: i + 1 + '.',
@@ -126,9 +134,6 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       this.recentArr.unshift(trackObj);
       this.recentArr.pop();
     }
-
-    // make this a function that animates in at the top
-    else console.log('Spotify api is not providing this track');
 
   }
 
@@ -193,9 +198,8 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   /*============================================================================
                             Add-to / Delete-from-playlist
   ============================================================================*/
-  this.addTrack = function(trackObj,){
+  this.addTrack = function(trackObj){
     this.newPlaylistArr.unshift(trackObj);
-    // console.log(this.newPlaylistArr);
   }
   this.deleteNewTrack = function(trackObj){
     this.newPlaylistArr.splice(trackObj,1);
@@ -366,7 +370,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     return $http.get(searchUrl)
 
     .then(function(response){
-
+      console.log(response);
       var results = response.data.playlists.items;
       var playlistsArr = [];
 
@@ -385,6 +389,7 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     })
   }
 
+  // Featured Message Header
   this.getFeaturedMessage = function(){
     $http.defaults.headers.common['Authorization'] = 'Bearer ' + accessToken;
     var searchUrl = "https://api.spotify.com/v1/browse/featured-playlists";
@@ -411,7 +416,6 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
     return $http.get(searchUrl)
 
     .then(function(response){
-      // console.log(results);
       var results = response.data;
 
       var playlistObj = {
@@ -427,7 +431,6 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
       return (playlistObj);
     })
   }
-
 
   this.getPlaylistTracks = function(tracks){
     var tracks = (tracks.id);
@@ -451,7 +454,6 @@ spotify.service('mainSrvc', function($http, $sce, $rootScope) {
             return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
           }
           duration = convertDuration(duration);
-          // console.log(duration);
 
           var obj = {
             number: i + 1 + '.',
