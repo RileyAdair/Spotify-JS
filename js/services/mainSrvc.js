@@ -1,7 +1,7 @@
 spotify.service('mainSrvc', function($http, $sce, $rootScope) {
   var self = this;
   var clientId = '132684ee2f514226955d32a0637b472f';
-  var accessToken = 'BQC6ER3z8s2izDnbTM2KbTdOP8u4dO7uqU_T4s4522xqLiadeO692tYCNJGrvU6fqytDprxdFdskDqPIeDuQMcwr4mBmo0PkkfKwTVTVlHJej2Ozrw4dc3izJzekUTzH5jyv9jkwpClURyepcm6LmP77QOI1AQ';
+  var accessToken = 'BQDon__0v3VMWOZcrfmEQEriu0xoI3Cw29zYe9rhN7nWBbb0Gz5YoVHvaEt4huWoYGAEOA2HegNnSkHaU6MkwtWv6mvGGJQGzinBULOINf9x9RtldM79vIPsfqvr4Nq889UypFdXKVlTjBrxYvsHxNLGC_Kpew';
 
   /*============================================================================
                               Search-for-Artist
